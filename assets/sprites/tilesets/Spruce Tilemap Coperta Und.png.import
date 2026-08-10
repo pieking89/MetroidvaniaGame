@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b0asj6m785aqu"
-path="res://.godot/imported/Stone Brick Tilemap.png-e72a18afe4a152b03e0bd09620cf2487.ctex"
+uid="uid://bqmrpdfc72ce1"
+path="res://.godot/imported/Spruce Tilemap Coperta Und.png-f45dd0788b0adf61b95ecf40335f59e1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/tilesets/Stone Brick Tilemap.png"
-dest_files=["res://.godot/imported/Stone Brick Tilemap.png-e72a18afe4a152b03e0bd09620cf2487.ctex"]
+source_file="res://assets/sprites/tilesets/Spruce Tilemap Coperta Und.png"
+dest_files=["res://.godot/imported/Spruce Tilemap Coperta Und.png-f45dd0788b0adf61b95ecf40335f59e1.ctex"]
 
 [params]
 

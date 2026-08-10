@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dvqysy518rrwa"
-path="res://.godot/imported/Grass Tilemap.png-ed7f3765d8eb1827c83bea75bc2b11fb.ctex"
+uid="uid://bskekl4o7y2vs"
+path="res://.godot/imported/Tilemap Sand Und.png-b288bb70aa822c0c3b0a1de390f8e5c4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/tilesets/Grass Tilemap.png"
-dest_files=["res://.godot/imported/Grass Tilemap.png-ed7f3765d8eb1827c83bea75bc2b11fb.ctex"]
+source_file="res://assets/sprites/tilesets/Tilemap Sand Und.png"
+dest_files=["res://.godot/imported/Tilemap Sand Und.png-b288bb70aa822c0c3b0a1de390f8e5c4.ctex"]
 
 [params]
 
