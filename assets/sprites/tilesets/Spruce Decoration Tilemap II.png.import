@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bsbt3bw32xuv5"
-path="res://.godot/imported/Player Spritesheet.png-7f6b161cfda86b8396ca88435c9406dd.ctex"
+uid="uid://ckl2m2og54uuu"
+path="res://.godot/imported/Spruce Decoration Tilemap II.png-923f9c3a526b066a59fa6bfc4bfad8f0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/players/Player Spritesheet.png"
-dest_files=["res://.godot/imported/Player Spritesheet.png-7f6b161cfda86b8396ca88435c9406dd.ctex"]
+source_file="res://assets/sprites/tilesets/Spruce Decoration Tilemap II.png"
+dest_files=["res://.godot/imported/Spruce Decoration Tilemap II.png-923f9c3a526b066a59fa6bfc4bfad8f0.ctex"]
 
 [params]
 
