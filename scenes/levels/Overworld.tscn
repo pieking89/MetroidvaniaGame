@@ -8,7 +8,7 @@
 [node name="Player" parent="." unique_id=1922407891 instance=ExtResource("1_aaa8w")]
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=1625913626]
-zoom = Vector2(6, 6)
+zoom = Vector2(9, 9)
 
 [node name="Plains01" parent="." unique_id=1131175104 instance=ExtResource("1_sqhky")]
 
