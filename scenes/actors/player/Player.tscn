@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://cqaiyxqp8gm6o" path="res://assets/sprites/players/Player Spritesheet nuovo.png" id="2_dsx4b"]
 [ext_resource type="PackedScene" uid="uid://dg7eqonklptvp" path="res://scenes/ui/particles/Landing Particles.tscn" id="2_imb2f"]
 [ext_resource type="PackedScene" uid="uid://s7b1m1humjn6" path="res://scenes/ui/particles/Jump Particles.tscn" id="3_7otbr"]
+[ext_resource type="PackedScene" uid="uid://djpb250idvg8i" path="res://scenes/ui/particles/Dash Particles.tscn" id="6_nnut8"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_iugxn"]
 load_path = "res://.godot/imported/Player Spritesheet.png-7f6b161cfda86b8396ca88435c9406dd.ctex"
@@ -255,7 +256,7 @@ animations = [{
 }],
 "loop": 0,
 "name": &"land",
-"speed": 8.0
+"speed": 15.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -283,11 +284,16 @@ script = ExtResource("1_u84y5")
 landing_particles_scene = ExtResource("2_imb2f")
 jump_particles_scene = ExtResource("3_7otbr")
 
+[node name="Dash Particles" parent="." unique_id=1021634305 instance=ExtResource("6_nnut8")]
+position = Vector2(0, 3)
+script = null
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1644757502]
 sprite_frames = SubResource("SpriteFrames_0oqdo")
-animation = &"crouch_walk"
+animation = &"land"
 autoplay = "idle"
-frame_progress = 0.7160907
+frame = 2
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1135186209]
 position = Vector2(0, 3)

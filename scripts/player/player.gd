@@ -21,6 +21,7 @@ var jump_hold_timer := 0.0
 var coyote_timer := 0.0	
 var jump_buffer_timer := 0.0
 var was_on_floor := false
+var anim_locked := false
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var collision: CollisionShape2D = $CollisionShape2D
@@ -28,6 +29,7 @@ var was_on_floor := false
 @onready var stand_position: Vector2 = collision.position
 @onready var crouch_size: Vector2 = Vector2(stand_size.x, stand_size.y - 2.0)
 @onready var crouch_position: Vector2 = Vector2(stand_position.x, stand_position.y + 1.0)
+@onready var dash_particles := $"Dash Particles/GPUParticles2D"
 @export var landing_particles_scene: PackedScene
 @export var jump_particles_scene: PackedScene
 
@@ -36,7 +38,7 @@ func start_dash() -> void:
 		Input.get_axis("move_left", "move_right"),
 		Input.get_axis("move_up", "move_down")
 	)
-
+	
 	if input == Vector2.ZERO:
 		input.x = -1.0 if sprite.flip_h else 1.0
 
@@ -48,6 +50,9 @@ func start_dash() -> void:
 		sprite.play("dash_down" if dash_direction.y > 0.0 else "dash_up")
 	else:
 		sprite.play("dash_side")
+	
+	dash_particles.rotation = dash_direction.angle() + PI
+	dash_particles.emitting = true
 
 
 func _physics_process(delta: float) -> void:
@@ -74,6 +79,9 @@ func _physics_process(delta: float) -> void:
 		jump_buffer_timer -= delta
 	
 	# --- dash in corso: prende il controllo del frame
+	if dash_timer <= 0.0 and dash_particles.emitting:
+		dash_particles.emitting = false
+	
 	if dash_timer > 0.0:
 		# uscita anticipata per salto
 		if jump_buffer_timer > 0.0 and coyote_timer > 0.0:
@@ -146,14 +154,14 @@ func _physics_process(delta: float) -> void:
 	
 	if is_on_floor() and not was_on_floor:
 		spawn_landing_particles()
+		play_locked("land")
 	was_on_floor = is_on_floor()
 		
 func update_animation(direction: float) -> void:
+	if anim_locked:
+		return
 	if direction != 0.0:
 		sprite.flip_h = direction < 0.0
-
-
-
 	if not is_on_floor():
 		sprite.play("jump" if velocity.y < 0.0 else "fall")
 	elif is_crouching:
@@ -181,4 +189,10 @@ func spawn_jump_particles() -> void:
 	get_parent().add_child(p)
 	p.global_position = global_position + Vector2(0, 8)
 	p.get_node("GPUParticles2D").emitting = true
+
+func play_locked(anim: String) -> void:
+	anim_locked = true
+	sprite.play(anim)
+	await sprite.animation_finished
+	anim_locked = false
 	

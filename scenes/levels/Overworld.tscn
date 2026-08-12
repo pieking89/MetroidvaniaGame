@@ -7,6 +7,7 @@
 [node name="Node2D" type="Node2D" unique_id=1370219854]
 
 [node name="Player" parent="." unique_id=1922407891 instance=ExtResource("1_aaa8w")]
+position = Vector2(0, 24)
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=1625913626]
 zoom = Vector2(9, 9)

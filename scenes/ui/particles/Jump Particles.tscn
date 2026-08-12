@@ -39,7 +39,7 @@ scale_curve = SubResource("CurveTexture_iwlcx")
 color_ramp = SubResource("GradientTexture1D_2taxs")
 anim_offset_max = 1.0
 
-[node name="LandingParticles" type="Node2D" unique_id=1021634305]
+[node name="JumpParticles" type="Node2D" unique_id=1021634305]
 script = ExtResource("1_h02mn")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=170018075]
