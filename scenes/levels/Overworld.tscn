@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bgegr7rr1b3xx" path="res://scenes/actors/player/Player.tscn" id="1_aaa8w"]
 [ext_resource type="PackedScene" uid="uid://dndpo0krxnff1" path="res://scenes/levels/Plains01.tscn" id="1_sqhky"]
+[ext_resource type="PackedScene" uid="uid://dg7eqonklptvp" path="res://scenes/ui/particles/Landing Particles.tscn" id="2_rt8uu"]
 
 [node name="Node2D" type="Node2D" unique_id=1370219854]
 
@@ -9,6 +10,8 @@
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=1625913626]
 zoom = Vector2(9, 9)
+
+[node name="LandingParticles" parent="Player" unique_id=1021634305 instance=ExtResource("2_rt8uu")]
 
 [node name="Plains01" parent="." unique_id=1131175104 instance=ExtResource("1_sqhky")]
 

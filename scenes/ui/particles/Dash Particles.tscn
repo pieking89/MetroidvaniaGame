@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://djpb250idvg8i"]
+
+[ext_resource type="Script" uid="uid://d1ok7r4pxpvdd" path="res://scripts/vfx/landing_particles.gd" id="1_x2wal"]
+[ext_resource type="Texture2D" uid="uid://dpnccbe6bxa2w" path="res://assets/sprites/vfx/Dash Ring.png" id="2_x2wal"]
+
+[sub_resource type="Gradient" id="Gradient_2taxs"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_2taxs"]
+gradient = SubResource("Gradient_2taxs")
+
+[sub_resource type="Curve" id="Curve_2taxs"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_iwlcx"]
+curve = SubResource("Curve_2taxs")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_2taxs"]
+particle_flag_disable_z = true
+angle_min = -89.99999
+angle_max = -89.99999
+direction = Vector3(-1, 0, 0)
+spread = 0.0
+initial_velocity_min = 45.0
+initial_velocity_max = 45.0
+angular_velocity_min = -1.6093254e-05
+angular_velocity_max = -1.6093254e-05
+gravity = Vector3(0, 0, 0)
+damping_min = 30.000002
+damping_max = 30.000002
+scale_curve = SubResource("CurveTexture_iwlcx")
+color_ramp = SubResource("GradientTexture1D_2taxs")
+anim_offset_max = 1.0
+
+[node name="LandingParticles" type="Node2D" unique_id=1021634305]
+script = ExtResource("1_x2wal")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=170018075]
+amount = 5
+texture = ExtResource("2_x2wal")
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_2taxs")

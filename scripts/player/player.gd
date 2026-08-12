@@ -8,7 +8,7 @@ const JUMP_BUFFER_TIME = 0.1
 const JUMP_HOLD_TIME = 0.15
 const DASH_SPEED = 300.0
 const DASH_TIME = 0.15
-const DASH_END_SPEED = 200.0
+const DASH_END_SPEED = 160.0
 const ACCELERATION = 1200.0
 const FRICTION = 1600.0
 const MOMENTUM_FRICTION = 200.0
@@ -20,6 +20,7 @@ var can_dash := true
 var jump_hold_timer := 0.0
 var coyote_timer := 0.0	
 var jump_buffer_timer := 0.0
+var was_on_floor := false
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var collision: CollisionShape2D = $CollisionShape2D
@@ -27,6 +28,8 @@ var jump_buffer_timer := 0.0
 @onready var stand_position: Vector2 = collision.position
 @onready var crouch_size: Vector2 = Vector2(stand_size.x, stand_size.y - 2.0)
 @onready var crouch_position: Vector2 = Vector2(stand_position.x, stand_position.y + 1.0)
+@export var landing_particles_scene: PackedScene
+@export var jump_particles_scene: PackedScene
 
 func start_dash() -> void:
 	var input := Vector2(
@@ -82,7 +85,7 @@ func _physics_process(delta: float) -> void:
 			move_and_slide()
 
 		var hit_floor := is_on_floor() and dash_direction.y > 0.0
-		if hit_floor or is_on_wall():
+		if hit_floor or is_on_wall() and dash_direction.dot(get_wall_normal()) < 0.0:
 			dash_timer = 0.0
 			velocity = dash_direction * DASH_END_SPEED
 		elif dash_timer <= 0.0:
@@ -104,6 +107,7 @@ func _physics_process(delta: float) -> void:
 	# --- il salto vero
 	if jump_buffer_timer > 0.0 and coyote_timer > 0.0:
 		velocity.y = JUMP_VELOCITY
+		spawn_jump_particles()
 		jump_buffer_timer = 0.0
 		coyote_timer = 0.0
 		jump_hold_timer = JUMP_HOLD_TIME
@@ -139,6 +143,10 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 	update_animation(direction)
+	
+	if is_on_floor() and not was_on_floor:
+		spawn_landing_particles()
+	was_on_floor = is_on_floor()
 		
 func update_animation(direction: float) -> void:
 	if direction != 0.0:
@@ -154,5 +162,23 @@ func update_animation(direction: float) -> void:
 		sprite.play("run")
 	else:
 		sprite.play("idle")
-		
+
+
+func spawn_landing_particles() -> void:
+	if landing_particles_scene == null:
+		return
+
+	var p := landing_particles_scene.instantiate()
+	get_parent().add_child(p)
+	p.global_position = global_position + Vector2(0, 8)
+	p.get_node("GPUParticles2D").emitting = true
+	
+func spawn_jump_particles() -> void:
+	if jump_particles_scene == null:
+		return
+
+	var p := jump_particles_scene.instantiate()
+	get_parent().add_child(p)
+	p.global_position = global_position + Vector2(0, 8)
+	p.get_node("GPUParticles2D").emitting = true
 	
