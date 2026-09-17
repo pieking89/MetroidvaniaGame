@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://bbp687dfssvnk"]
+
+[ext_resource type="Script" uid="uid://clq6whgojnisx" path="res://scripts/ui/pause_menu.gd" id="1_vb6pq"]
+[ext_resource type="Theme" uid="uid://bus4e4bqdo077" path="res://resources/themes/ui.tres" id="2_7ida2"]
+[ext_resource type="AudioStream" uid="uid://bv1dra14jma6g" path="res://assets/audio/sound effect/Click.mp3" id="3_5twic"]
+[ext_resource type="AudioStream" uid="uid://brqqhb7u7iffh" path="res://assets/audio/sound effect/Confirm.mp3" id="4_v5pi0"]
+
+[node name="PauseMenu" type="CanvasLayer" unique_id=1299844188]
+process_mode = 3
+script = ExtResource("1_vb6pq")
+
+[node name="Overlay" type="ColorRect" parent="." unique_id=2077624700]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_7ida2")
+color = Color(0, 0, 0, 0.5882353)
+
+[node name="Center" type="CenterContainer" parent="Overlay" unique_id=549462700]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBox" type="VBoxContainer" parent="Overlay/Center" unique_id=1402698062]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Titolo" type="Label" parent="Overlay/Center/VBox" unique_id=131903224]
+layout_mode = 2
+text = "Pausa..."
+horizontal_alignment = 1
+
+[node name="BtnRiprendi" type="Button" parent="Overlay/Center/VBox" unique_id=151118917]
+layout_mode = 2
+text = "Riprendi"
+
+[node name="BtnOpzioni" type="Button" parent="Overlay/Center/VBox" unique_id=2092599648]
+layout_mode = 2
+text = "Opzioni"
+
+[node name="BtnEsci" type="Button" parent="Overlay/Center/VBox" unique_id=1085190917]
+layout_mode = 2
+text = "Esci"
+
+[node name="SfxMove" type="AudioStreamPlayer2D" parent="." unique_id=1703472955]
+stream = ExtResource("3_5twic")
+
+[node name="SfxSelect" type="AudioStreamPlayer2D" parent="." unique_id=711178888]
+stream = ExtResource("4_v5pi0")

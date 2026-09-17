@@ -1,0 +1,25 @@
+[gd_resource type="Theme" format=3 uid="uid://bus4e4bqdo077"]
+
+[ext_resource type="FontFile" uid="uid://cojvj0fmi6sfo" path="res://assets/fonts/Renogare-Regular.otf" id="1_23gw7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7ida2"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h0e6p"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lfjf6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_23gw7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nb1sn"]
+
+[resource]
+default_font = ExtResource("1_23gw7")
+default_font_size = 64
+Button/colors/font_color = Color(0.78431374, 0.78431374, 0.78431374, 1)
+Button/colors/font_focus_color = Color(1, 1, 1, 1)
+Button/colors/font_hover_color = Color(1, 1, 1, 1)
+Button/styles/disabled = SubResource("StyleBoxEmpty_7ida2")
+Button/styles/focus = SubResource("StyleBoxEmpty_h0e6p")
+Button/styles/hover = SubResource("StyleBoxEmpty_lfjf6")
+Button/styles/normal = SubResource("StyleBoxEmpty_23gw7")
+Button/styles/pressed = SubResource("StyleBoxEmpty_nb1sn")
