@@ -12,6 +12,7 @@ const DASH_END_SPEED = 160.0
 const ACCELERATION = 1200.0
 const FRICTION = 1600.0
 const MOMENTUM_FRICTION = 200.0
+const STEP_INTERVAL = 0.3
 
 var dash_timer := 0.0
 var dash_direction := Vector2.ZERO
@@ -22,6 +23,7 @@ var coyote_timer := 0.0
 var jump_buffer_timer := 0.0
 var was_on_floor := false
 var anim_locked := false
+var step_timer := 0.0
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var collision: CollisionShape2D = $CollisionShape2D
@@ -32,6 +34,8 @@ var anim_locked := false
 @onready var dash_particles := $"Dash Particles/GPUParticles2D"
 @export var landing_particles_scene: PackedScene
 @export var jump_particles_scene: PackedScene
+@onready var sfx_dash: AudioStreamPlayer2D = $SfxDash
+@onready var sfx_walk_on_grass: AudioStreamPlayer2D = $SfxWalkOnGrass
 
 func start_dash() -> void:
 	var input := Vector2(
@@ -41,9 +45,12 @@ func start_dash() -> void:
 	
 	if input == Vector2.ZERO:
 		input.x = -1.0 if sprite.flip_h else 1.0
+		
 
 	dash_direction = input.normalized()
 	dash_timer = DASH_TIME
+	sfx_dash.pitch_scale = randf_range(0.75, 0.85)
+	sfx_dash.play()
 	can_dash = false
 
 	if absf(dash_direction.y) > 0.7:
@@ -133,6 +140,16 @@ func _physics_process(delta: float) -> void:
 	var current_speed := CROUCH_SPEED if is_crouching else SPEED
 
 	var direction := Input.get_axis("move_left", "move_right")
+
+	if is_on_floor() and direction != 0.0:
+		step_timer -= delta
+		if step_timer <= 0.0:
+			sfx_walk_on_grass.pitch_scale = randf_range(0.92, 1.08)
+			sfx_walk_on_grass.play(0.65)
+			step_timer = STEP_INTERVAL
+	else:
+		step_timer = 0.0
+		sfx_walk_on_grass.stop()
 
 	if direction != 0.0:
 		var target := direction * current_speed

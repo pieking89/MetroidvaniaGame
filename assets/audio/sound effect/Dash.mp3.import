@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bwlk83uqol5cm"
+path="res://.godot/imported/Dash.mp3-18f621f76ea0725eb563fc8b06923a35.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/sound effect/Dash.mp3"
+dest_files=["res://.godot/imported/Dash.mp3-18f621f76ea0725eb563fc8b06923a35.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

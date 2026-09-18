@@ -4,6 +4,7 @@
 [ext_resource type="Theme" uid="uid://bus4e4bqdo077" path="res://resources/themes/ui.tres" id="2_7ida2"]
 [ext_resource type="AudioStream" uid="uid://bv1dra14jma6g" path="res://assets/audio/sound effect/Click.mp3" id="3_5twic"]
 [ext_resource type="AudioStream" uid="uid://brqqhb7u7iffh" path="res://assets/audio/sound effect/Confirm.mp3" id="4_v5pi0"]
+[ext_resource type="AudioStream" uid="uid://ief6dpa5dgpf" path="res://assets/audio/sound effect/Esc.mp3" id="5_v5pi0"]
 
 [node name="PauseMenu" type="CanvasLayer" unique_id=1299844188]
 process_mode = 3
@@ -52,3 +53,6 @@ stream = ExtResource("3_5twic")
 
 [node name="SfxSelect" type="AudioStreamPlayer2D" parent="." unique_id=711178888]
 stream = ExtResource("4_v5pi0")
+
+[node name="SfxPause" type="AudioStreamPlayer2D" parent="." unique_id=44713646]
+stream = ExtResource("5_v5pi0")

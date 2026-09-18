@@ -1,16 +1,19 @@
 extends CanvasLayer
 
+var skip_move_sfx := false
+
 @onready var first_button: Button = $Overlay/Center/VBox/BtnRiprendi
 @onready var overlay: ColorRect = $Overlay
 @onready var sfx_move: AudioStreamPlayer2D = $SfxMove
 @onready var sfx_select: AudioStreamPlayer2D = $SfxSelect
+@onready var sfx_pause: AudioStreamPlayer2D = $SfxPause
 
 func _ready() -> void:
 	hide()
 	
 	var vbox := $Overlay/Center/VBox
 	vbox.get_node("BtnRiprendi").pressed.connect(toggle_pause)
-	vbox.get_node("BtnEsci").pressed.connect(get_tree().quit)
+	vbox.get_node("BtnEsci").pressed.connect(quit_game)
 
 	for btn in vbox.get_children():
 		if btn is Button:
@@ -24,7 +27,10 @@ func setup_indicator(btn: Button) -> void:
 	btn.text = "  " + nome
 
 	btn.focus_entered.connect(func():
-		sfx_move.play()
+		if skip_move_sfx:
+			skip_move_sfx = false
+		else:
+			sfx_move.play()
 		btn.text = "> " + nome
 		var t := btn.create_tween()
 		t.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
@@ -49,8 +55,10 @@ func toggle_pause() -> void:
 	get_tree().paused = p
 
 	if p:
+		sfx_pause.play()
 		overlay.modulate.a = 0.0
 		show()
+		skip_move_sfx = true
 		first_button.grab_focus()
 		create_tween().tween_property(overlay, "modulate:a", 1.0, 0.15)
 	else:
@@ -58,3 +66,7 @@ func toggle_pause() -> void:
 		t.tween_property(overlay, "modulate:a", 0.0, 0.15)
 		await t.finished
 		hide()
+		
+func quit_game() -> void:
+	await get_tree().create_timer(0.5, true, false, true).timeout
+	get_tree().quit()
