@@ -1,9 +1,10 @@
 [gd_scene format=3 uid="uid://dmtxr4upn0ax3"]
 
-[ext_resource type="Script" uid="uid://dsbdxu4k2foa2" path="res://scenes/ui/options_menu.gd" id="1_edyki"]
+[ext_resource type="Script" uid="uid://dsbdxu4k2foa2" path="res://scripts/ui/options_menu.gd" id="1_edyki"]
 [ext_resource type="Theme" uid="uid://bus4e4bqdo077" path="res://resources/themes/ui.tres" id="1_i16wg"]
 [ext_resource type="Theme" uid="uid://f31lg6jflw7v" path="res://resources/themes/ui_small.tres" id="2_85c7g"]
 [ext_resource type="FontFile" uid="uid://6oynj1ip01gj" path="res://assets/fonts/Outfit-Light.ttf" id="3_uxfc2"]
+[ext_resource type="AudioStream" uid="uid://bv1dra14jma6g" path="res://assets/audio/sound effect/Click.mp3" id="5_wwyh1"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bg45r"]
 bg_color = Color(0, 0, 0, 0.36862746)
@@ -384,3 +385,7 @@ grow_horizontal = 2
 theme = ExtResource("1_i16wg")
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 text = "Opzioni"
+
+[node name="SfxMove" type="AudioStreamPlayer2D" parent="." unique_id=133890203]
+stream = ExtResource("5_wwyh1")
+bus = &"SFX"

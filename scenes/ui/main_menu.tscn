@@ -74,9 +74,11 @@ text = "Parkour Champion!"
 
 [node name="SfxMove" type="AudioStreamPlayer2D" parent="." unique_id=335950061]
 stream = ExtResource("2_m1kxf")
+bus = &"SFX"
 
 [node name="SfxSelect" type="AudioStreamPlayer2D" parent="." unique_id=996316931]
 stream = ExtResource("3_x2yvf")
+bus = &"SFX"
 
 [node name="OptionsMenu" parent="." unique_id=1976807698 instance=ExtResource("6_uhagc")]
 visible = false

@@ -5,6 +5,7 @@ const DUR := 0.35
 
 var skip_move_sfx := false
 var main_x := 0.0
+var in_transizione := false
 
 @onready var main_panel: Control = $MainPanel
 @onready var vbox: VBoxContainer = $MainPanel/VBox
@@ -32,6 +33,9 @@ func _ready() -> void:
 
 
 func open_options() -> void:
+	if in_transizione:
+		return
+	in_transizione = true
 	options.show()
 	options.position.x = main_x + SLIDE
 	options.modulate.a = 0.0
@@ -46,9 +50,13 @@ func open_options() -> void:
 
 	await t.finished
 	main_panel.hide()
+	in_transizione = false
 
 
 func close_options() -> void:
+	if in_transizione:
+		return
+	in_transizione = true
 	main_panel.show()
 	main_panel.position.x = main_x - SLIDE
 
@@ -62,9 +70,9 @@ func close_options() -> void:
 
 	await t.finished
 	options.hide()
-
 	skip_move_sfx = true
 	vbox.get_node("BtnOpzioni").grab_focus()
+	in_transizione = false
 
 
 func start_game() -> void:
@@ -94,3 +102,9 @@ func setup_indicator(btn: Button) -> void:
 		var t := btn.create_tween()
 		t.tween_property(btn, "position:x", 0.0, 0.12)
 	)
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("pause") and not in_transizione:
+		close_options()
+		get_viewport().set_input_as_handled()
+		

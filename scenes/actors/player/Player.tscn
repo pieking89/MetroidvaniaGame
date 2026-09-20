@@ -304,6 +304,8 @@ shape = SubResource("RectangleShape2D_lcpsd")
 [node name="SfxDash" type="AudioStreamPlayer2D" parent="." unique_id=1967745450]
 stream = ExtResource("7_ulkbv")
 volume_db = 4.0
+bus = &"SFX"
 
 [node name="SfxWalkOnGrass" type="AudioStreamPlayer2D" parent="." unique_id=1232154950]
 stream = ExtResource("8_r4dnb")
+bus = &"SFX"
