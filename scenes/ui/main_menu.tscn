@@ -1,0 +1,83 @@
+[gd_scene format=3 uid="uid://bbxplo7g63p3v"]
+
+[ext_resource type="Theme" uid="uid://bus4e4bqdo077" path="res://resources/themes/ui.tres" id="1_sl1te"]
+[ext_resource type="Script" uid="uid://bejy4hru5osd8" path="res://scripts/ui/main_menu.gd" id="1_x2yvf"]
+[ext_resource type="AudioStream" uid="uid://bv1dra14jma6g" path="res://assets/audio/sound effect/Click.mp3" id="2_m1kxf"]
+[ext_resource type="AudioStream" uid="uid://brqqhb7u7iffh" path="res://assets/audio/sound effect/Confirm.mp3" id="3_x2yvf"]
+[ext_resource type="FontFile" uid="uid://diwcfmwkv8537" path="res://assets/fonts/Daydream DEMO.otf" id="5_x2yvf"]
+[ext_resource type="PackedScene" uid="uid://dmtxr4upn0ax3" path="res://scenes/ui/OptionsMenu.tscn" id="6_uhagc"]
+
+[node name="MainMenu" type="Control" unique_id=244049]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_x2yvf")
+
+[node name="MainPanel" type="Control" parent="." unique_id=353990588]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBox" type="VBoxContainer" parent="MainPanel" unique_id=695696499]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 808.0
+offset_top = 360.5
+offset_right = 1072.0
+offset_bottom = 679.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BtnGioca" type="Button" parent="MainPanel/VBox" unique_id=1979931189]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("1_sl1te")
+text = "Gioca"
+
+[node name="BtnOpzioni" type="Button" parent="MainPanel/VBox" unique_id=119898205]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("1_sl1te")
+text = "Opzioni"
+
+[node name="BtnEsci" type="Button" parent="MainPanel/VBox" unique_id=277588005]
+layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("1_sl1te")
+text = "Esci"
+
+[node name="Titolo" type="Label" parent="MainPanel" unique_id=1075271767]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 397.0
+offset_top = 160.0
+offset_right = 1483.0
+offset_bottom = 264.0
+grow_horizontal = 2
+theme = ExtResource("1_sl1te")
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.17254902)
+theme_override_constants/shadow_offset_x = 8
+theme_override_constants/shadow_offset_y = 8
+theme_override_constants/outline_size = 2
+theme_override_constants/shadow_outline_size = 5
+theme_override_fonts/font = ExtResource("5_x2yvf")
+text = "Parkour Champion!"
+
+[node name="SfxMove" type="AudioStreamPlayer2D" parent="." unique_id=335950061]
+stream = ExtResource("2_m1kxf")
+
+[node name="SfxSelect" type="AudioStreamPlayer2D" parent="." unique_id=996316931]
+stream = ExtResource("3_x2yvf")
+
+[node name="OptionsMenu" parent="." unique_id=1976807698 instance=ExtResource("6_uhagc")]
+visible = false
+layout_mode = 1

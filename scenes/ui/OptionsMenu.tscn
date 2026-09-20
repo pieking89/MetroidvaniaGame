@@ -1,5 +1,27 @@
 [gd_scene format=3 uid="uid://dmtxr4upn0ax3"]
 
+[ext_resource type="Script" uid="uid://dsbdxu4k2foa2" path="res://scenes/ui/options_menu.gd" id="1_edyki"]
+[ext_resource type="Theme" uid="uid://bus4e4bqdo077" path="res://resources/themes/ui.tres" id="1_i16wg"]
+[ext_resource type="Theme" uid="uid://f31lg6jflw7v" path="res://resources/themes/ui_small.tres" id="2_85c7g"]
+[ext_resource type="FontFile" uid="uid://6oynj1ip01gj" path="res://assets/fonts/Outfit-Light.ttf" id="3_uxfc2"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bg45r"]
+bg_color = Color(0, 0, 0, 0.36862746)
+corner_radius_top_left = 32
+corner_radius_top_right = 32
+corner_radius_bottom_right = 32
+corner_radius_bottom_left = 32
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_0oqdo"]
+color = Color(0.119567, 0.13075143, 0.20475996, 1)
+grow_begin = 0.0
+grow_end = 0.0
+thickness = 24
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_lcpsd"]
+color = Color(1, 1, 1, 1)
+thickness = 24
+
 [node name="OptionsMenu" type="Control" unique_id=1976807698]
 layout_mode = 3
 anchors_preset = 15
@@ -7,60 +29,358 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_edyki")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=967399217]
+[node name="Panel2" type="Panel" parent="." unique_id=179918308]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -457.25
+offset_top = -458.0
+offset_right = 457.25
+offset_bottom = 460.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_bg45r")
 
-[node name="Label" type="Label" parent="VBoxContainer" unique_id=792077957]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 0
-text = "Opzioni"
+[node name="BtnApplica" type="Button" parent="Panel2" unique_id=1681429193]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 37.0
+offset_top = -101.0
+offset_right = 363.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("1_i16wg")
+text = "Applica"
 
-[node name="RigaRisoluzione" type="HBoxContainer" parent="VBoxContainer" unique_id=1978828771]
-custom_minimum_size = Vector2(500, 0)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 0
+[node name="BtnIndietro" type="Button" parent="Panel2" unique_id=1555594470]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -363.0
+offset_top = -101.0
+offset_right = -37.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("1_i16wg")
+text = "Indietro"
 
-[node name="Label" type="Label" parent="VBoxContainer/RigaRisoluzione" unique_id=570338965]
-custom_minimum_size = Vector2(500, 0)
-layout_mode = 2
+[node name="Panel" type="Panel" parent="." unique_id=1752324373]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -457.25
+offset_top = -458.0
+offset_right = 457.25
+offset_bottom = 341.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_bg45r")
+
+[node name="BtnIndietro" type="Button" parent="Panel" unique_id=1116989674]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -363.0
+offset_top = -122.0
+offset_right = -37.0
+offset_bottom = -41.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("2_85c7g")
+theme_override_fonts/font = ExtResource("3_uxfc2")
+theme_override_font_sizes/font_size = 32
+text = "Keybinds"
+
+[node name="BtnIndietro" type="Button" parent="Panel/BtnIndietro" unique_id=1484435355]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 237.0
+offset_top = -82.0
+offset_right = 563.0
+offset_bottom = -1.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("2_85c7g")
+theme_override_fonts/font = ExtResource("3_uxfc2")
+theme_override_font_sizes/font_size = 32
+text = "Credits"
+
+[node name="Generale" type="Control" parent="Panel" unique_id=1447076066]
+anchors_preset = 0
+offset_top = -16.0
+offset_right = 40.0
+offset_bottom = 24.0
+
+[node name="Titolo" type="Label" parent="Panel/Generale" unique_id=1898771053]
+layout_mode = 0
+offset_left = 80.0
+offset_top = 192.0
+offset_right = 236.0
+offset_bottom = 233.0
+theme = ExtResource("2_85c7g")
+text = "Generale"
+
+[node name="Percentuale" type="Label" parent="Panel/Generale" unique_id=1771044920]
+layout_mode = 0
+offset_left = 280.0
+offset_top = 192.0
+offset_right = 436.0
+offset_bottom = 233.0
+theme = ExtResource("2_85c7g")
+text = "50.0%"
+horizontal_alignment = 2
+
+[node name="Slider" type="HSlider" parent="Panel/Generale" unique_id=205750643]
+layout_mode = 0
+offset_left = 464.0
+offset_top = 181.0
+offset_right = 835.25
+offset_bottom = 245.0
+theme = ExtResource("2_85c7g")
+theme_override_styles/slider = SubResource("StyleBoxLine_0oqdo")
+theme_override_styles/grabber_area = SubResource("StyleBoxLine_lcpsd")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_lcpsd")
+step = 5.0
+value = 50.0
+
+[node name="Musica" type="Control" parent="Panel" unique_id=1187918047]
+anchors_preset = 0
+offset_top = -16.0
+offset_right = 40.0
+offset_bottom = 24.0
+
+[node name="Titolo" type="Label" parent="Panel/Musica" unique_id=1991774080]
+layout_mode = 0
+offset_left = 80.0
+offset_top = 272.0
+offset_right = 236.0
+offset_bottom = 313.0
+theme = ExtResource("2_85c7g")
+text = "Musica"
+
+[node name="Percentuale" type="Label" parent="Panel/Musica" unique_id=1245932936]
+layout_mode = 0
+offset_left = 280.0
+offset_top = 272.0
+offset_right = 436.0
+offset_bottom = 313.0
+theme = ExtResource("2_85c7g")
+text = "100.0%"
+horizontal_alignment = 2
+
+[node name="Slider" type="HSlider" parent="Panel/Musica" unique_id=30100500]
+layout_mode = 0
+offset_left = 464.0
+offset_top = 261.0
+offset_right = 835.25
+offset_bottom = 325.0
+theme = ExtResource("2_85c7g")
+theme_override_styles/slider = SubResource("StyleBoxLine_0oqdo")
+theme_override_styles/grabber_area = SubResource("StyleBoxLine_lcpsd")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_lcpsd")
+step = 5.0
+value = 100.0
+
+[node name="Effetti sonori" type="Control" parent="Panel" unique_id=2067691608]
+anchors_preset = 0
+offset_top = -16.0
+offset_right = 40.0
+offset_bottom = 24.0
+
+[node name="Titolo" type="Label" parent="Panel/Effetti sonori" unique_id=291900837]
+layout_mode = 0
+offset_left = 80.0
+offset_top = 352.0
+offset_right = 258.0
+offset_bottom = 393.0
+theme = ExtResource("2_85c7g")
+text = "Effetti sonori"
+
+[node name="Percentuale" type="Label" parent="Panel/Effetti sonori" unique_id=824816009]
+layout_mode = 0
+offset_left = 280.0
+offset_top = 352.0
+offset_right = 436.0
+offset_bottom = 393.0
+theme = ExtResource("2_85c7g")
+text = "100.0%"
+horizontal_alignment = 2
+
+[node name="Slider" type="HSlider" parent="Panel/Effetti sonori" unique_id=877490894]
+layout_mode = 0
+offset_left = 464.0
+offset_top = 341.0
+offset_right = 835.25
+offset_bottom = 405.0
+theme = ExtResource("2_85c7g")
+theme_override_styles/slider = SubResource("StyleBoxLine_0oqdo")
+theme_override_styles/grabber_area = SubResource("StyleBoxLine_lcpsd")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxLine_lcpsd")
+step = 5.0
+value = 100.0
+
+[node name="Risoluzione" type="Control" parent="Panel" unique_id=1275508548]
+anchors_preset = 0
+offset_top = -16.0
+offset_right = 40.0
+offset_bottom = 24.0
+
+[node name="Titolo" type="Label" parent="Panel/Risoluzione" unique_id=977933758]
+layout_mode = 0
+offset_left = 80.0
+offset_top = 432.0
+offset_right = 258.0
+offset_bottom = 473.0
+theme = ExtResource("2_85c7g")
 text = "Risoluzione"
 
-[node name="OptionButton" type="OptionButton" parent="VBoxContainer/RigaRisoluzione" unique_id=1143354334]
-layout_mode = 2
+[node name="OptionButton" type="OptionButton" parent="Panel/Risoluzione" unique_id=1995410549]
+layout_mode = 0
+offset_left = 463.0
+offset_top = 431.0
+offset_right = 836.25
+offset_bottom = 480.0
+theme = ExtResource("2_85c7g")
+selected = 1
+item_count = 4
+popup/item_0/text = "HD (1280x720)"
+popup/item_0/id = 0
+popup/item_1/text = "Full HD (1920x1080)"
+popup/item_1/id = 1
+popup/item_2/text = "Quad HD (2560x1440)"
+popup/item_2/id = 2
+popup/item_3/text = "Ultra HD (3840x2160)"
+popup/item_3/id = 3
 
-[node name="RigaSchermo" type="HBoxContainer" parent="VBoxContainer" unique_id=20040679]
-custom_minimum_size = Vector2(500, 0)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 0
+[node name="Modalitá" type="Control" parent="Panel" unique_id=2042581187]
+anchors_preset = 0
+offset_top = -16.0
+offset_right = 40.0
+offset_bottom = 24.0
 
-[node name="Label" type="Label" parent="VBoxContainer/RigaSchermo" unique_id=1412323957]
-custom_minimum_size = Vector2(500, 0)
-layout_mode = 2
-text = "Schermo"
+[node name="Titolo" type="Label" parent="Panel/Modalitá" unique_id=1879859304]
+layout_mode = 0
+offset_left = 80.0
+offset_top = 512.0
+offset_right = 258.0
+offset_bottom = 553.0
+theme = ExtResource("2_85c7g")
+text = "Modalitá"
 
-[node name="OptionButton" type="OptionButton" parent="VBoxContainer/RigaSchermo" unique_id=1451489693]
-layout_mode = 2
+[node name="OptionButton" type="OptionButton" parent="Panel/Modalitá" unique_id=1751059638]
+layout_mode = 0
+offset_left = 463.0
+offset_top = 511.0
+offset_right = 836.25
+offset_bottom = 560.0
+theme = ExtResource("2_85c7g")
+selected = 0
+item_count = 3
+popup/item_0/text = "Windowed"
+popup/item_0/id = 0
+popup/item_1/text = "Fullscreen"
+popup/item_1/id = 1
+popup/item_2/text = "Borderless"
+popup/item_2/id = 2
 
-[node name="RigaVolume" type="HBoxContainer" parent="VBoxContainer" unique_id=2067962805]
-custom_minimum_size = Vector2(500, 0)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 0
+[node name="Limiter" type="Control" parent="Panel" unique_id=1631470889]
+anchors_preset = 0
+offset_top = -16.0
+offset_right = 40.0
+offset_bottom = 24.0
 
-[node name="Label" type="Label" parent="VBoxContainer/RigaVolume" unique_id=992531647]
-custom_minimum_size = Vector2(500, 0)
-layout_mode = 2
-text = "Volume"
+[node name="Titolo" type="Label" parent="Panel/Limiter" unique_id=672677165]
+layout_mode = 0
+offset_left = 80.0
+offset_top = 592.0
+offset_right = 258.0
+offset_bottom = 633.0
+theme = ExtResource("2_85c7g")
+text = "FPS Limiter"
 
-[node name="HSlider" type="HSlider" parent="VBoxContainer/RigaVolume" unique_id=2074644331]
-custom_minimum_size = Vector2(200, 0)
-layout_mode = 2
+[node name="OptionButton" type="OptionButton" parent="Panel/Limiter" unique_id=835177703]
+layout_mode = 0
+offset_left = 463.0
+offset_top = 591.0
+offset_right = 836.25
+offset_bottom = 640.0
+theme = ExtResource("2_85c7g")
+selected = 1
+item_count = 12
+popup/item_0/text = "30 FPS"
+popup/item_0/id = 0
+popup/item_1/text = "60 FPS"
+popup/item_1/id = 1
+popup/item_2/text = "75 FPS"
+popup/item_2/id = 2
+popup/item_3/text = "100 FPS"
+popup/item_3/id = 3
+popup/item_4/text = "120 FPS"
+popup/item_4/id = 4
+popup/item_5/text = "144 FPS"
+popup/item_5/id = 5
+popup/item_6/text = "165 FPS"
+popup/item_6/id = 6
+popup/item_7/text = "180 FPS"
+popup/item_7/id = 7
+popup/item_8/text = "240 FPS"
+popup/item_8/id = 8
+popup/item_9/text = "360 FPS"
+popup/item_9/id = 9
+popup/item_10/text = "480 FPS"
+popup/item_10/id = 10
+popup/item_11/text = "Illimitato."
+popup/item_11/id = 11
+
+[node name="OptionButton2" type="OptionButton" parent="Panel/Limiter" unique_id=584651950]
+layout_mode = 0
+offset_left = 261.0
+offset_top = 591.0
+offset_right = 456.0
+offset_bottom = 640.0
+theme = ExtResource("2_85c7g")
+theme_override_font_sizes/font_size = 24
+selected = 0
+item_count = 2
+popup/item_0/text = "VSync ON"
+popup/item_0/id = 0
+popup/item_1/text = "VSync OFF"
+popup/item_1/id = 1
+
+[node name="Opzioni" type="Label" parent="." unique_id=2033312546]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -135.625
+offset_top = 130.0
+offset_right = 135.625
+offset_bottom = 221.0
+grow_horizontal = 2
+theme = ExtResource("1_i16wg")
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+text = "Opzioni"

@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Victory Hunter (BETA)"
-run/main_scene="uid://dxr15sfx4v38n"
+run/main_scene="uid://bbxplo7g63p3v"
 config/features=PackedStringArray("4.7", "C#", "GL Compatibility")
 config/icon="res://icon.svg"
 

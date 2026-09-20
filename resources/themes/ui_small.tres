@@ -1,0 +1,29 @@
+[gd_resource type="Theme" format=3 uid="uid://f31lg6jflw7v"]
+
+[ext_resource type="FontFile" uid="uid://xt8u3lakygi3" path="res://assets/fonts/Outfit-Bold.ttf" id="1_p5dsx"]
+[ext_resource type="FontFile" uid="uid://6oynj1ip01gj" path="res://assets/fonts/Outfit-Light.ttf" id="2_2mh1n"]
+[ext_resource type="Texture2D" uid="uid://bd2cg3m6gvt63" path="res://assets/ui/HeadUnfocused.png" id="2_qwsks"]
+[ext_resource type="Texture2D" uid="uid://twa1onvegnlg" path="res://assets/ui/HeadDisabled.png" id="3_65nft"]
+[ext_resource type="Texture2D" uid="uid://ck6bqxg4ya08r" path="res://assets/ui/Head.png" id="4_gg6t3"]
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_lcpsd"]
+color = Color(1, 1, 1, 1)
+thickness = 24
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_0oqdo"]
+color = Color(0.119567, 0.13075143, 0.20475996, 1)
+grow_begin = 0.0
+grow_end = 0.0
+thickness = 24
+
+[resource]
+default_font = ExtResource("2_2mh1n")
+default_font_size = 32
+Button/font_sizes/font_size = 12
+Button/fonts/font = ExtResource("1_p5dsx")
+HSlider/icons/grabber = ExtResource("2_qwsks")
+HSlider/icons/grabber_disabled = ExtResource("3_65nft")
+HSlider/icons/grabber_highlight = ExtResource("4_gg6t3")
+HSlider/styles/grabber_area = SubResource("StyleBoxLine_lcpsd")
+HSlider/styles/grabber_area_highlight = SubResource("StyleBoxLine_lcpsd")
+HSlider/styles/slider = SubResource("StyleBoxLine_0oqdo")
