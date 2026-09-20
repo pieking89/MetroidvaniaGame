@@ -7,6 +7,7 @@ const RESOLUTIONS: Array[Vector2i] = [
 	Vector2i(2560, 1440),
 	Vector2i(3840, 2160),
 ]
+const FPS_OPTIONS: Array[int] = [30, 60, 75, 100, 120, 144, 165, 180, 240, 360, 480, 0]
 
 var data := {
 	"vol_master": 100.0,
@@ -14,7 +15,7 @@ var data := {
 	"vol_sfx": 100.0,
 	"resolution": 0,
 	"window_mode": 0,
-	"fps_limit": 0,
+	"fps_limit": 1,
 	"vsync": true,
 }
 
@@ -55,7 +56,7 @@ func apply_all() -> void:
 	set_bus("Music", data["vol_music"])
 	set_bus("SFX", data["vol_sfx"])
 	apply_video()
-
+	apply_fps()
 
 func apply_video() -> void:
 	var size: Vector2i = RESOLUTIONS[data["resolution"]]
@@ -80,3 +81,9 @@ func apply_video() -> void:
 	get_window().content_scale_size = size
 	get_window().content_scale_factor = float(size.y) / 1080.0
 	print("size: ", size, " viewport: ", get_viewport().size, " factor: ", get_window().content_scale_factor)
+
+func apply_fps() -> void:
+	Engine.max_fps = FPS_OPTIONS[data["fps_limit"]]
+	DisplayServer.window_set_vsync_mode(
+		DisplayServer.VSYNC_ENABLED if data["vsync"] else DisplayServer.VSYNC_DISABLED
+	)

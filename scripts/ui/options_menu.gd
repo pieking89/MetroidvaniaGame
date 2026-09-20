@@ -13,6 +13,8 @@ signal chiudi
 @onready var lbl_sfx: Label = $"Panel/Effetti sonori/Percentuale"
 @onready var opt_modalita: OptionButton = $Panel/Modalitá/OptionButton
 @onready var opt_risoluzione: OptionButton = $Panel/Risoluzione/OptionButton
+@onready var opt_fps: OptionButton = $Panel/Limiter/OptionButton
+@onready var opt_vsync: OptionButton = $Panel/Limiter/OptionButton2
 var pending := {}
 
 
@@ -22,12 +24,10 @@ func _ready() -> void:
 	slider_generale.value = Settings.data["vol_master"]
 	slider_musica.value = Settings.data["vol_music"]
 	slider_sfx.value = Settings.data["vol_sfx"]
-
 	lbl_generale.text = "%.1f%%" % slider_generale.value
 	lbl_musica.text = "%.1f%%" % slider_musica.value
 	lbl_sfx.text = "%.1f%%" % slider_sfx.value
-	btn_indietro.pressed.connect(_on_indietro)	
-	btn_applica.pressed.connect(_on_applica)
+	btn_indietro.pressed.connect(_on_indietro)
 	slider_generale.value_changed.connect(_on_volume.bind("vol_master", "Master", lbl_generale, true))
 	slider_musica.value_changed.connect(_on_volume.bind("vol_music", "Music", lbl_musica, false))
 	slider_sfx.value_changed.connect(_on_volume.bind("vol_sfx", "SFX", lbl_sfx, true))
@@ -36,6 +36,13 @@ func _ready() -> void:
 	opt_risoluzione.selected = Settings.data["resolution"]
 	opt_risoluzione.item_selected.connect(_on_risoluzione)
 	aggiorna_risoluzione_ui()
+	opt_fps.selected = Settings.data["fps_limit"]
+	opt_fps.item_selected.connect(_on_fps)
+	opt_vsync.selected = 0 if Settings.data["vsync"] else 1
+	opt_vsync.item_selected.connect(_on_vsync)
+	for opt in [opt_risoluzione, opt_modalita, opt_fps, opt_vsync]:
+		opt.focus_mode = Control.FOCUS_ALL
+		opt.gui_input.connect(_on_option_input.bind(opt))
 
 
 
@@ -77,3 +84,35 @@ func aggiorna_risoluzione_ui() -> void:
 			opt_risoluzione.selected = idx
 	else:
 		opt_risoluzione.selected = Settings.data["resolution"]
+
+func _on_fps(idx: int) -> void:
+	Settings.set_value("fps_limit", idx)
+	Settings.apply_fps()
+
+
+func _on_vsync(idx: int) -> void:
+	Settings.set_value("vsync", idx == 0)
+	Settings.apply_fps()
+
+func _on_option_input(event: InputEvent, opt: OptionButton) -> void:
+	if opt.disabled:
+		return
+	if event.is_action_pressed("ui_right"):
+		cicla(opt, 1)
+		get_viewport().set_input_as_handled()
+	elif event.is_action_pressed("ui_left"):
+		cicla(opt, -1)
+		get_viewport().set_input_as_handled()
+
+func cicla(opt: OptionButton, dir: int) -> void:
+	var n := opt.item_count
+	var i := opt.selected + dir
+	if i < 0:
+		i = n - 1
+	elif i >= n:
+		i = 0
+	opt.selected = i
+	opt.item_selected.emit(i)
+
+func primo_focus() -> void:
+	slider_generale.grab_focus()

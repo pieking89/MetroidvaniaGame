@@ -47,22 +47,6 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_bg45r")
 
-[node name="BtnApplica" type="Button" parent="Panel2" unique_id=1681429193]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = 37.0
-offset_top = -101.0
-offset_right = 363.0
-offset_bottom = -20.0
-grow_horizontal = 2
-grow_vertical = 0
-theme = ExtResource("1_i16wg")
-text = "Applica"
-
 [node name="BtnIndietro" type="Button" parent="Panel2" unique_id=1555594470]
 layout_mode = 1
 anchors_preset = 7
@@ -70,9 +54,9 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -363.0
+offset_left = -163.0
 offset_top = -101.0
-offset_right = -37.0
+offset_right = 163.0
 offset_bottom = -20.0
 grow_horizontal = 2
 grow_vertical = 0
@@ -94,7 +78,25 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_bg45r")
 
-[node name="BtnIndietro" type="Button" parent="Panel" unique_id=1116989674]
+[node name="Credits" type="Button" parent="Panel" unique_id=1484435355]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 37.0
+offset_top = -123.0
+offset_right = 363.0
+offset_bottom = -42.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("2_85c7g")
+theme_override_fonts/font = ExtResource("3_uxfc2")
+theme_override_font_sizes/font_size = 32
+text = "Credits"
+
+[node name="Keybinds" type="Button" parent="Panel" unique_id=1116989674]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -107,28 +109,11 @@ offset_right = -37.0
 offset_bottom = -41.0
 grow_horizontal = 2
 grow_vertical = 0
+focus_neighbor_bottom = NodePath("../Credits")
 theme = ExtResource("2_85c7g")
 theme_override_fonts/font = ExtResource("3_uxfc2")
 theme_override_font_sizes/font_size = 32
 text = "Keybinds"
-
-[node name="BtnIndietro" type="Button" parent="Panel/BtnIndietro" unique_id=1484435355]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = 237.0
-offset_top = -82.0
-offset_right = 563.0
-offset_bottom = -1.0
-grow_horizontal = 2
-grow_vertical = 0
-theme = ExtResource("2_85c7g")
-theme_override_fonts/font = ExtResource("3_uxfc2")
-theme_override_font_sizes/font_size = 32
-text = "Credits"
 
 [node name="Generale" type="Control" parent="Panel" unique_id=1447076066]
 anchors_preset = 0
@@ -237,6 +222,7 @@ offset_left = 464.0
 offset_top = 341.0
 offset_right = 835.25
 offset_bottom = 405.0
+focus_neighbor_bottom = NodePath("../../Risoluzione/OptionButton")
 theme = ExtResource("2_85c7g")
 theme_override_styles/slider = SubResource("StyleBoxLine_0oqdo")
 theme_override_styles/grabber_area = SubResource("StyleBoxLine_lcpsd")
@@ -265,6 +251,7 @@ offset_left = 463.0
 offset_top = 431.0
 offset_right = 836.25
 offset_bottom = 480.0
+focus_neighbor_bottom = NodePath("../../Modalitá/OptionButton")
 theme = ExtResource("2_85c7g")
 selected = 1
 item_count = 4
@@ -298,6 +285,7 @@ offset_left = 463.0
 offset_top = 511.0
 offset_right = 836.25
 offset_bottom = 560.0
+focus_neighbor_bottom = NodePath("../../Limiter/OptionButton")
 theme = ExtResource("2_85c7g")
 selected = 0
 item_count = 3
@@ -329,6 +317,7 @@ offset_left = 463.0
 offset_top = 591.0
 offset_right = 836.25
 offset_bottom = 640.0
+focus_neighbor_bottom = NodePath("../OptionButton2")
 theme = ExtResource("2_85c7g")
 selected = 1
 item_count = 12

@@ -54,7 +54,7 @@ func open_options() -> void:
 	await t.finished
 	main_panel.hide()
 	in_transizione = false
-
+	options.primo_focus()
 
 func close_options() -> void:
 	if in_transizione:
@@ -107,7 +107,7 @@ func setup_indicator(btn: Button) -> void:
 	)
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("pause") and not in_transizione:
+	if event.is_action_pressed("pause") and options.visible and not in_transizione:
 		close_options()
 		get_viewport().set_input_as_handled()
 		
