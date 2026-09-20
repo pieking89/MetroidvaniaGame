@@ -13,6 +13,7 @@ var in_transizione := false
 @onready var first_button: Button = $MainPanel/VBox/BtnGioca
 @onready var sfx_move: AudioStreamPlayer2D = $SfxMove
 @onready var sfx_select: AudioStreamPlayer2D = $SfxSelect
+@onready var titolo: Label = $MainPanel/VBox/Titolo
 
 
 func _ready() -> void:
@@ -30,6 +31,8 @@ func _ready() -> void:
 
 	skip_move_sfx = true
 	first_button.grab_focus()
+	await get_tree().process_frame
+	print("titolo: ", titolo.position, " ", titolo.size)
 
 
 func open_options() -> void:
@@ -85,7 +88,7 @@ func quit_game() -> void:
 	
 func setup_indicator(btn: Button) -> void:
 	var nome := btn.text
-	btn.text = "  " + nome
+	btn.text = "  " + nome + "  "
 
 	btn.focus_entered.connect(func():
 		if skip_move_sfx:

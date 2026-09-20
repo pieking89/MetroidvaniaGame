@@ -1,14 +1,5 @@
 [gd_scene format=3 uid="uid://dup6s2kkwlstt"]
 
-[ext_resource type="Theme" uid="uid://bus4e4bqdo077" path="res://resources/themes/ui.tres" id="1_bkqy3"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bg45r"]
-bg_color = Color(0, 0, 0, 0.36862746)
-corner_radius_top_left = 32
-corner_radius_top_right = 32
-corner_radius_bottom_right = 32
-corner_radius_bottom_left = 32
-
 [node name="OptionsMenu" type="Control" unique_id=1976807698]
 layout_mode = 3
 anchors_preset = 15
@@ -17,78 +8,19 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Panel" type="Panel" parent="." unique_id=1752324373]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -457.25
-offset_top = -338.0
-offset_right = 457.25
-offset_bottom = 338.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_bg45r")
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1798616789]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
-[node name="Panel2" type="Panel" parent="." unique_id=179918308]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -457.25
-offset_top = -338.0
-offset_right = 457.25
-offset_bottom = 461.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_bg45r")
+[node name="Button" type="Button" parent="VBoxContainer" unique_id=2145439206]
+layout_mode = 2
 
-[node name="BtnApplica" type="Button" parent="Panel2" unique_id=1681429193]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = 37.0
-offset_top = -105.0
-offset_right = 363.0
-offset_bottom = -24.0
-grow_horizontal = 2
-grow_vertical = 0
-theme = ExtResource("1_bkqy3")
-text = "Applica"
+[node name="Button2" type="Button" parent="VBoxContainer" unique_id=820926073]
+layout_mode = 2
 
-[node name="BtnIndietro" type="Button" parent="Panel2" unique_id=1555594470]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -363.0
-offset_top = -105.0
-offset_right = -37.0
-offset_bottom = -24.0
-grow_horizontal = 2
-grow_vertical = 0
-theme = ExtResource("1_bkqy3")
-text = "Indietro"
+[node name="Button3" type="Button" parent="VBoxContainer" unique_id=310282034]
+layout_mode = 2
 
-[node name="Label" type="Label" parent="." unique_id=2033312546]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -135.625
-offset_top = 250.0
-offset_right = 135.625
-offset_bottom = 341.0
-grow_horizontal = 2
-theme = ExtResource("1_bkqy3")
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-text = "Options"
+[node name="Button4" type="Button" parent="VBoxContainer" unique_id=760566653]
+layout_mode = 2

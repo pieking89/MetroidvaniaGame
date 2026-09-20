@@ -35,6 +35,7 @@ func _ready() -> void:
 	opt_modalita.item_selected.connect(_on_modalita)
 	opt_risoluzione.selected = Settings.data["resolution"]
 	opt_risoluzione.item_selected.connect(_on_risoluzione)
+	aggiorna_risoluzione_ui()
 
 
 
@@ -57,10 +58,22 @@ func _on_volume(valore: float, key: String, bus_name: String, lbl: Label, suona:
 		sfx_move.play()
 		
 func _on_modalita(idx: int) -> void:
-	print("modalita cambiata: ", idx)
 	Settings.set_value("window_mode", idx)
 	Settings.apply_video()
+	aggiorna_risoluzione_ui()
 
 func _on_risoluzione(idx: int) -> void:
 	Settings.set_value("resolution", idx)
 	Settings.apply_video()
+
+func aggiorna_risoluzione_ui() -> void:
+	var in_finestra: bool = Settings.data["window_mode"] == 0
+	opt_risoluzione.disabled = not in_finestra
+
+	if not in_finestra:
+		var nativa := DisplayServer.screen_get_size()
+		var idx: int = Settings.RESOLUTIONS.find(nativa)
+		if idx != -1:
+			opt_risoluzione.selected = idx
+	else:
+		opt_risoluzione.selected = Settings.data["resolution"]

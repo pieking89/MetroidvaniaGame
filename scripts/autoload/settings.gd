@@ -69,10 +69,14 @@ func apply_video() -> void:
 			DisplayServer.window_set_position((screen - size) / 2)
 		1:
 			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN)
-			size = DisplayServer.screen_get_size()
+			# size resta quella scelta nella tendina
 		2:
 			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
 			DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_BORDERLESS, true)
 			size = DisplayServer.screen_get_size()
 			DisplayServer.window_set_size(size)
 			DisplayServer.window_set_position(Vector2i.ZERO)
+		
+	get_window().content_scale_size = size
+	get_window().content_scale_factor = float(size.y) / 1080.0
+	print("size: ", size, " viewport: ", get_viewport().size, " factor: ", get_window().content_scale_factor)
