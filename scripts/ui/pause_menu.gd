@@ -15,6 +15,7 @@ var in_transizione := false
 @onready var sfx_move: AudioStreamPlayer2D = $SfxMove
 @onready var sfx_select: AudioStreamPlayer2D = $SfxSelect
 @onready var sfx_pause: AudioStreamPlayer2D = $SfxPause
+@onready var panel: Panel = $Panel
 
 
 func _ready() -> void:
@@ -32,6 +33,7 @@ func _ready() -> void:
 		if btn is Button:
 			setup_indicator(btn)
 			btn.pressed.connect(sfx_select.play)
+	
 
 
 func open_options() -> void:
@@ -54,6 +56,7 @@ func open_options() -> void:
 	await t.finished
 	main_panel.hide()
 	in_transizione = false
+	options.primo_focus()
 
 
 func close_options() -> void:
@@ -113,6 +116,7 @@ func _unhandled_input(event: InputEvent) -> void:
 func toggle_pause() -> void:
 	var p := not get_tree().paused
 	get_tree().paused = p
+	AudioManager.set_muffled(p)
 
 	if p:
 		sfx_pause.play()
@@ -129,13 +133,5 @@ func toggle_pause() -> void:
 
 
 func quit_game() -> void:
-	var t := create_tween().set_parallel()
-	t.set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
-	t.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN)
-
-	t.tween_property(main_panel, "position:x", main_x - SLIDE, DUR)
-	t.tween_property(overlay, "modulate:a", 0.0, DUR)
-
-	await t.finished
-	get_tree().paused = false
-	get_tree().change_scene_to_file("res://scenes/ui/main_menu.tscn")
+	AudioManager.set_muffled(false)
+	SceneTransition.change_scene("res://scenes/ui/main_menu.tscn")

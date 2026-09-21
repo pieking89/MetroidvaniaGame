@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://bkdk3wr3xikr1"]
+
+[ext_resource type="Script" uid="uid://cgn2ea3gtfukv" path="res://scripts/ui/music_toast.gd" id="1_kli2q"]
+[ext_resource type="Theme" uid="uid://f31lg6jflw7v" path="res://resources/themes/ui_small.tres" id="2_kli2q"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kli2q"]
+bg_color = Color(0, 0, 0, 0.5882353)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+expand_margin_left = 16.0
+expand_margin_top = 8.0
+expand_margin_right = 16.0
+expand_margin_bottom = 8.0
+
+[node name="MusicToast" type="CanvasLayer" unique_id=1515984453]
+layer = 90
+script = ExtResource("1_kli2q")
+
+[node name="Panel" type="PanelContainer" parent="." unique_id=136525616]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -72.0
+offset_top = 31.0
+offset_right = -32.0
+offset_bottom = 72.0
+grow_horizontal = 0
+theme = ExtResource("2_kli2q")
+theme_override_styles/panel = SubResource("StyleBoxFlat_kli2q")
+
+[node name="Label" type="Label" parent="Panel" unique_id=1149846139]
+layout_mode = 2

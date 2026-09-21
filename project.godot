@@ -21,8 +21,10 @@ buses/default_bus_layout="uid://cjvv0chp57uin"
 
 [autoload]
 
-AudioManager="*uid://l5sck66gclph"
 Settings="*uid://d0po8wa8fq7y"
+SceneTransition="*uid://bfkyopw1i0bbq"
+AudioManager="*uid://biytqwst1wymh"
+DialogBox="*uid://bb4n40doby2p2"
 
 [display]
 

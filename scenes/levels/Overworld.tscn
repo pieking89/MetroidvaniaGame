@@ -1,11 +1,29 @@
 [gd_scene format=3 uid="uid://dxr15sfx4v38n"]
 
 [ext_resource type="PackedScene" uid="uid://bgegr7rr1b3xx" path="res://scenes/actors/player/Player.tscn" id="1_aaa8w"]
+[ext_resource type="Script" uid="uid://cc3kvhfwe2ebp" path="res://scenes/levels/overworld.gd" id="1_o11ob"]
 [ext_resource type="PackedScene" uid="uid://dndpo0krxnff1" path="res://scenes/levels/Plains01.tscn" id="1_sqhky"]
+[ext_resource type="Script" uid="uid://cu3or3e1ne6ld" path="res://scripts/audio/track.gd" id="2_o20x2"]
 [ext_resource type="PackedScene" uid="uid://dg7eqonklptvp" path="res://scenes/ui/particles/Landing Particles.tscn" id="2_rt8uu"]
+[ext_resource type="AudioStream" uid="uid://b1xse123s7chw" path="res://assets/audio/music/Plains.mp3" id="3_agc4c"]
+[ext_resource type="AudioStream" uid="uid://n3iubbbaetq6" path="res://assets/audio/music/Plains2.mp3" id="4_si7yd"]
 [ext_resource type="PackedScene" uid="uid://bbp687dfssvnk" path="res://scenes/ui/PauseMenu.tscn" id="4_xnoj7"]
 
-[node name="Node2D" type="Node2D" unique_id=1370219854]
+[sub_resource type="Resource" id="Resource_vkc00"]
+script = ExtResource("2_o20x2")
+stream = ExtResource("3_agc4c")
+titolo = "Almost Closing Time"
+metadata/_custom_type_script = "uid://cu3or3e1ne6ld"
+
+[sub_resource type="Resource" id="Resource_agc4c"]
+script = ExtResource("2_o20x2")
+stream = ExtResource("4_si7yd")
+titolo = "Accumula Town"
+metadata/_custom_type_script = "uid://cu3or3e1ne6ld"
+
+[node name="Overworld" type="Node2D" unique_id=1370219854]
+script = ExtResource("1_o11ob")
+musica = Array[ExtResource("2_o20x2")]([SubResource("Resource_vkc00"), SubResource("Resource_agc4c")])
 
 [node name="Player" parent="." unique_id=1922407891 instance=ExtResource("1_aaa8w")]
 position = Vector2(0, -16)

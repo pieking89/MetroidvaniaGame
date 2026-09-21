@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dr1c7gieu3w4m"
+path="res://.godot/imported/Lerisia (Primary Logic) (Full Version) Zektbach.mp3-d546d4aa1c40469a9206e131daa24e7e.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/music/Lerisia (Primary Logic) (Full Version) Zektbach.mp3"
+dest_files=["res://.godot/imported/Lerisia (Primary Logic) (Full Version) Zektbach.mp3-d546d4aa1c40469a9206e131daa24e7e.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

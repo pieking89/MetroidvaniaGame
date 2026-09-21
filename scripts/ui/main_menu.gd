@@ -33,6 +33,7 @@ func _ready() -> void:
 	first_button.grab_focus()
 	await get_tree().process_frame
 	print("titolo: ", titolo.position, " ", titolo.size)
+	AudioManager.play_music(preload("res://assets/audio/music/Lobby.mp3"))
 
 
 func open_options() -> void:
@@ -79,7 +80,7 @@ func close_options() -> void:
 
 
 func start_game() -> void:
-	get_tree().change_scene_to_file("res://scenes/levels/Overworld.tscn")
+	SceneTransition.change_scene("res://scenes/levels/Overworld.tscn")
 
 
 func quit_game() -> void:
@@ -101,7 +102,7 @@ func setup_indicator(btn: Button) -> void:
 	)
 
 	btn.focus_exited.connect(func():
-		btn.text = "  " + nome
+		btn.text = "  " + nome + "  "
 		var t := btn.create_tween()
 		t.tween_property(btn, "position:x", 0.0, 0.12)
 	)

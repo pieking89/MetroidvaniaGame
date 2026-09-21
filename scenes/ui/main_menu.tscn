@@ -2,10 +2,14 @@
 
 [ext_resource type="Theme" uid="uid://bus4e4bqdo077" path="res://resources/themes/ui.tres" id="1_sl1te"]
 [ext_resource type="Script" uid="uid://bejy4hru5osd8" path="res://scripts/ui/main_menu.gd" id="1_x2yvf"]
+[ext_resource type="Texture2D" uid="uid://2okiouorqkt3" path="res://Screenshot 2026-09-21 115521.png" id="2_btxxm"]
 [ext_resource type="AudioStream" uid="uid://bv1dra14jma6g" path="res://assets/audio/sound effect/Click.mp3" id="2_m1kxf"]
 [ext_resource type="AudioStream" uid="uid://brqqhb7u7iffh" path="res://assets/audio/sound effect/Confirm.mp3" id="3_x2yvf"]
 [ext_resource type="FontFile" uid="uid://diwcfmwkv8537" path="res://assets/fonts/Daydream DEMO.otf" id="5_x2yvf"]
 [ext_resource type="PackedScene" uid="uid://dmtxr4upn0ax3" path="res://scenes/ui/OptionsMenu.tscn" id="6_uhagc"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_btxxm"]
+bg_color = Color(0, 0, 0, 1)
 
 [node name="MainMenu" type="Control" unique_id=244049]
 layout_mode = 3
@@ -15,6 +19,22 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_x2yvf")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=483084543]
+layout_mode = 0
+offset_right = 1920.5836
+offset_bottom = 1080.0
+texture = ExtResource("2_btxxm")
+expand_mode = 1
+
+[node name="Overlay" type="ColorRect" parent="." unique_id=1195035040]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.5882353)
 
 [node name="MainPanel" type="Control" parent="." unique_id=353990588]
 layout_mode = 1
@@ -46,11 +66,11 @@ theme_override_constants/shadow_offset_y = 8
 theme_override_constants/outline_size = 2
 theme_override_constants/shadow_outline_size = 5
 theme_override_fonts/font = ExtResource("5_x2yvf")
-text = "Parkour Champion!"
+text = "Quest raiders!"
 horizontal_alignment = 1
 
 [node name="Control" type="Control" parent="MainPanel/VBox" unique_id=881264279]
-custom_minimum_size = Vector2(0, 200)
+custom_minimum_size = Vector2(0, 250)
 layout_mode = 2
 size_flags_vertical = 3
 
@@ -73,7 +93,7 @@ theme = ExtResource("1_sl1te")
 text = "Esci"
 
 [node name="Control2" type="Control" parent="MainPanel/VBox" unique_id=1200660117]
-custom_minimum_size = Vector2(0, 200)
+custom_minimum_size = Vector2(0, 250)
 layout_mode = 2
 size_flags_vertical = 3
 
@@ -88,3 +108,13 @@ bus = &"SFX"
 [node name="OptionsMenu" parent="." unique_id=1976807698 instance=ExtResource("6_uhagc")]
 visible = false
 layout_mode = 1
+
+[node name="Panel" type="Panel" parent="." unique_id=1757250895]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_btxxm")

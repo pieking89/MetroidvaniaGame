@@ -1,0 +1,10 @@
+[gd_resource type="AudioStreamPlaylist" format=3 uid="uid://cpvkq54tehio5"]
+
+[ext_resource type="AudioStream" uid="uid://b1xse123s7chw" path="res://assets/audio/music/Plains.mp3" id="1_xrd0l"]
+[ext_resource type="AudioStream" uid="uid://n3iubbbaetq6" path="res://assets/audio/music/Plains2.mp3" id="2_opywf"]
+
+[resource]
+fade_time = 1.0
+stream_count = 2
+stream_0 = ExtResource("1_xrd0l")
+stream_1 = ExtResource("2_opywf")

@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://bb4n40doby2p2"]
+
+[ext_resource type="Script" uid="uid://bnkmsw0h04uqn" path="res://scenes/ui/dialog_box.gd" id="1_rfax6"]
+[ext_resource type="Theme" uid="uid://f31lg6jflw7v" path="res://resources/themes/ui_small.tres" id="1_xrudr"]
+
+[node name="DialogBox" type="CanvasLayer" unique_id=712846322]
+layer = 80
+script = ExtResource("1_rfax6")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=263417382]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 200
+theme_override_constants/margin_right = 200
+theme_override_constants/margin_bottom = 40
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer" unique_id=169542244]
+layout_mode = 2
+size_flags_vertical = 8
+theme = ExtResource("1_xrudr")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MarginContainer/PanelContainer" unique_id=1409785594]
+layout_mode = 2
+fit_content = true

@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://fld2f0u84np6"]
+
+[ext_resource type="Texture2D" uid="uid://cujhy11qvuj54" path="res://assets/sprites/tilesets/Grass Decoration Tilemap.png" id="1_mmxkb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mmxkb"]
+size = Vector2(27, 20)
+
+[node name="Sign" type="Area2D" unique_id=303350890]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=97530711]
+texture = ExtResource("1_mmxkb")
+hframes = 16
+vframes = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=836226267]
+shape = SubResource("RectangleShape2D_mmxkb")
+
+[node name="Prompt" type="Sprite2D" parent="." unique_id=513846163]
