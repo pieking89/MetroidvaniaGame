@@ -281,7 +281,7 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lcpsd"]
 size = Vector2(6, 10)
 
-[node name="Player" type="CharacterBody2D" unique_id=1922407891]
+[node name="Player" type="CharacterBody2D" unique_id=1922407891 groups=["player"]]
 script = ExtResource("1_u84y5")
 landing_particles_scene = ExtResource("2_imb2f")
 jump_particles_scene = ExtResource("3_7otbr")
