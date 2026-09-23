@@ -3,6 +3,8 @@ extends Area2D
 @export_multiline var pagine: PackedStringArray = ["..."]
 @export var frame_normale := 1
 @export var frame_evidenziato := 0
+@export var nome_parlante := "Cartello"
+@export var icona: Texture2D
 
 @onready var sprite: Sprite2D = $Sprite2D
 var _vicino := false
@@ -40,7 +42,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	if DialogBox.aperto:
 		DialogBox.avanti()
 	else:
-		DialogBox.apri(pagine)
+		DialogBox.apri(pagine, nome_parlante, icona)
 		DialogBox.nascondi_prompt()
 
 	if not DialogBox.aperto:

@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bnkmsw0h04uqn" path="res://scenes/ui/dialog_box.gd" id="1_rfax6"]
 [ext_resource type="Theme" uid="uid://f31lg6jflw7v" path="res://resources/themes/ui_small.tres" id="1_xrudr"]
+[ext_resource type="FontFile" uid="uid://cojvj0fmi6sfo" path="res://assets/fonts/Renogare-Regular.otf" id="3_y63tx"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rfax6"]
 bg_color = Color(0, 0, 0, 0.5882353)
@@ -10,9 +11,9 @@ corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
 expand_margin_left = 16.0
-expand_margin_top = 8.0
+expand_margin_top = 16.0
 expand_margin_right = 16.0
-expand_margin_bottom = 8.0
+expand_margin_bottom = 16.0
 
 [node name="DialogBox" type="CanvasLayer" unique_id=712846322]
 layer = 80
@@ -35,7 +36,33 @@ size_flags_vertical = 8
 theme = ExtResource("1_xrudr")
 theme_override_styles/panel = SubResource("StyleBoxFlat_rfax6")
 
-[node name="Testo" type="RichTextLabel" parent="Margin/Panel" unique_id=1409785594]
+[node name="Hint" type="Label" parent="Margin/Panel" unique_id=1016037285]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+text = "▼"
+
+[node name="HBox" type="HBoxContainer" parent="Margin/Panel" unique_id=317170585]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Ritratto" type="TextureRect" parent="Margin/Panel/HBox" unique_id=1617654290]
+texture_filter = 1
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
+size_flags_vertical = 4
+expand_mode = 1
+stretch_mode = 5
+
+[node name="VBox" type="VBoxContainer" parent="Margin/Panel/HBox" unique_id=750778753]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Nome" type="Label" parent="Margin/Panel/HBox/VBox" unique_id=561209529]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_y63tx")
+
+[node name="Testo" type="RichTextLabel" parent="Margin/Panel/HBox/VBox" unique_id=1409785594]
 layout_mode = 2
 fit_content = true
 

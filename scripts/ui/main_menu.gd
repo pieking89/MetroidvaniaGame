@@ -108,7 +108,7 @@ func setup_indicator(btn: Button) -> void:
 	)
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("pause") and options.visible and not in_transizione:
+	if (event.is_action_pressed("pause") or event.is_action_pressed("ui_cancel")) and options.visible and not in_transizione:
 		close_options()
 		get_viewport().set_input_as_handled()
 		

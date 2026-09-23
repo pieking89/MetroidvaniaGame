@@ -56,7 +56,7 @@ func start_dash() -> void:
 	if input == Vector2.ZERO:
 		input.x = -1.0 if sprite.flip_h else 1.0
 
-	dash_direction = input.normalized()
+	dash_direction = snappato(input.normalized())
 	dash_timer = DASH_TIME
 	sfx_dash.pitch_scale = randf_range(0.75, 0.85)
 	sfx_dash.play()
@@ -241,3 +241,8 @@ func play_locked(anim: String) -> void:
 	sprite.play(anim)
 	await sprite.animation_finished
 	anim_locked = false
+
+func snappato(v: Vector2) -> Vector2:
+	var passo := PI / 4.0                      # 45 gradi
+	var angolo := snappedf(v.angle(), passo)
+	return Vector2.RIGHT.rotated(angolo)
