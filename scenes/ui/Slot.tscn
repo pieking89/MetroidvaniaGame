@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://ckp5ts4h67n7g"]
+
+[ext_resource type="Script" uid="uid://gk0drba8u7ub" path="res://scenes/ui/slot.gd" id="1_nluyq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0oqdo"]
+bg_color = Color(0, 0, 0, 0.5882353)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="Slot" type="PanelContainer" unique_id=966795201]
+custom_minimum_size = Vector2(96, 96)
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_0oqdo")
+script = ExtResource("1_nluyq")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=175222425]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer" unique_id=1417437196]
+layout_mode = 2
+theme_override_constants/margin_left = 6
+theme_override_constants/margin_top = 6
+theme_override_constants/margin_right = 6
+theme_override_constants/margin_bottom = 6
+
+[node name="Icona" type="TextureRect" parent="MarginContainer/MarginContainer" unique_id=1563037360]
+layout_mode = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Numero" type="Label" parent="MarginContainer" unique_id=322493777]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="Quantita" type="Label" parent="MarginContainer" unique_id=1785294802]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8

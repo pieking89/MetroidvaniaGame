@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://bbd1lnvbuufk7"]
+
+[ext_resource type="Script" uid="uid://cmh20cjfwsu5d" path="res://scripts/items/ItemData.gd" id="1_ecwel"]
+[ext_resource type="Texture2D" uid="uid://c1itu4dj3048j" path="res://assets/sprites/props/Pozione Di Rigenerazine.png" id="1_i4oy1"]
+
+[resource]
+script = ExtResource("1_ecwel")
+nome = "Pozione di Rigenerazione"
+descrizione = "Rigenera la barra della vita se bevuta."
+icona = ExtResource("1_i4oy1")
+metadata/_custom_type_script = "uid://cmh20cjfwsu5d"

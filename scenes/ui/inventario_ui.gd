@@ -3,10 +3,13 @@ extends CanvasLayer
 @export var durata_tooltip: float = 2.5
 
 @onready var pannello: PanelContainer = $Pannello
-@onready var label_monete: Label = $Pannello/Margine/Contenuto/Monete
-@onready var lista: VBoxContainer = $Pannello/Margine/Contenuto/Lista
-@onready var tooltip_box: PanelContainer = $PanelContainer
-@onready var tooltip: Label = $PanelContainer/Tooltip
+@onready var lista: ItemList = $Pannello/Margine/Contenuto/Lista
+@onready var monete_hud: MarginContainer = $MoneteHUD
+@onready var label_monete: Label = $MoneteHUD/MoneteRiga/Monete
+@onready var hotbar_box: MarginContainer = $HotbarMargin
+@onready var slots: Array[Node] = $HotbarMargin/Hotbar.get_children()
+@onready var tooltip_box: PanelContainer = $TooltipBox
+@onready var tooltip: Label = $TooltipBox/Tooltip
 @onready var prompt: Label = $PromptMargin/Prompt
 
 var _tw: Tween
@@ -16,11 +19,19 @@ func _ready() -> void:
 	pannello.visible = false
 	tooltip_box.visible = false
 	prompt.hide()
+	for i in slots.size():
+		slots[i].imposta_numero(i + 1)
 	Inventario.cambiato.connect(_aggiorna)
+	Inventario.oggetto_usato.connect(_on_oggetto_usato)
 	_aggiorna()
 
 func _process(_delta: float) -> void:
-	if (pannello.visible or tooltip_box.visible or prompt.visible) and not _in_gioco():
+	var gioco := _in_gioco()
+	monete_hud.visible = gioco
+	hotbar_box.visible = gioco
+	if gioco:
+		return
+	if pannello.visible or tooltip_box.visible or prompt.visible:
 		pannello.visible = false
 		tooltip_box.visible = false
 		prompt.hide()
@@ -29,16 +40,60 @@ func _process(_delta: float) -> void:
 		if _pt:
 			_pt.kill()
 
-func _unhandled_input(event: InputEvent) -> void:
-	if not event.is_action_pressed("backpack"):
-		return
+func _input(event: InputEvent) -> void:
 	if not _in_gioco():
 		return
-	pannello.visible = not pannello.visible
-	get_viewport().set_input_as_handled()
+	if event.is_action_pressed("backpack"):
+		pannello.visible = not pannello.visible
+		if pannello.visible:
+			lista.grab_focus()
+		else:
+			lista.release_focus()
+		get_viewport().set_input_as_handled()
+
+func _unhandled_input(event: InputEvent) -> void:
+	if not _in_gioco():
+		return
+	for i in slots.size():
+		if event.is_action_pressed("hotbar_%d" % (i + 1)):
+			if pannello.visible:
+				_assegna_selezionato(i)
+			else:
+				Inventario.usa_slot(i)
+			get_viewport().set_input_as_handled()
+			return
 
 func _in_gioco() -> bool:
 	return get_tree().get_first_node_in_group("player") != null
+
+func _assegna_selezionato(indice: int) -> void:
+	var sel := lista.get_selected_items()
+	if sel.is_empty():
+		return
+	var item: ItemData = lista.get_item_metadata(sel[0])
+	Inventario.assegna_hotbar(indice, item)
+
+func _on_oggetto_usato(item: ItemData) -> void:
+	mostra_tooltip("Hai usato: %s" % item.nome)
+
+func _aggiorna() -> void:
+	label_monete.text = str(Inventario.monete)
+
+	var selezionato: ItemData = null
+	var sel := lista.get_selected_items()
+	if not sel.is_empty():
+		selezionato = lista.get_item_metadata(sel[0])
+
+	lista.clear()
+	for item: ItemData in Inventario.oggetti:
+		var idx := lista.add_item("%s x%d" % [item.nome, Inventario.oggetti[item]], item.icona)
+		lista.set_item_metadata(idx, item)
+		if item == selezionato:
+			lista.select(idx)
+
+	for i in slots.size():
+		var item: ItemData = Inventario.hotbar[i]
+		slots[i].imposta(item, Inventario.oggetti.get(item, 0))
 
 func mostra_tooltip(testo: String) -> void:
 	if _tw:
@@ -75,18 +130,3 @@ func nascondi_prompt() -> void:
 	_pt.tween_property(prompt, "modulate:a", 0.0, 0.12)
 	_pt.tween_property(prompt, "scale", Vector2(0.9, 0.9), 0.12)
 	_pt.chain().tween_callback(prompt.hide)
-
-func _aggiorna() -> void:
-	label_monete.text = "Monete: %d" % Inventario.monete
-	for figlio in lista.get_children():
-		figlio.queue_free()
-	if Inventario.oggetti.is_empty():
-		_aggiungi_riga("Vuoto")
-		return
-	for nome in Inventario.oggetti:
-		_aggiungi_riga("%s x%d" % [nome, Inventario.oggetti[nome]])
-
-func _aggiungi_riga(testo: String) -> void:
-	var riga := Label.new()
-	riga.text = testo
-	lista.add_child(riga)

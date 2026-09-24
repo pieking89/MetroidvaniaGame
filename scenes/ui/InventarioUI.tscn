@@ -3,6 +3,9 @@
 [ext_resource type="Script" uid="uid://dwunnuarwhruk" path="res://scenes/ui/inventario_ui.gd" id="1_yrj8d"]
 [ext_resource type="Theme" uid="uid://bus4e4bqdo077" path="res://resources/themes/ui.tres" id="2_pog06"]
 [ext_resource type="Theme" uid="uid://f31lg6jflw7v" path="res://resources/themes/ui_small.tres" id="3_lf5rm"]
+[ext_resource type="Texture2D" uid="uid://3b5tl8aeoi13" path="res://assets/sprites/props/Backpack.png" id="3_qqmxb"]
+[ext_resource type="Texture2D" uid="uid://dupf1ufw4ok7m" path="res://assets/sprites/props/CoinSingola.png" id="5_prmhq"]
+[ext_resource type="PackedScene" uid="uid://ckp5ts4h67n7g" path="res://scenes/ui/Slot.tscn" id="6_prmhq"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pog06"]
 bg_color = Color(0, 0, 0, 0.5882353)
@@ -21,16 +24,16 @@ corner_radius_top_left = 8
 corner_radius_top_right = 8
 corner_radius_bottom_right = 8
 corner_radius_bottom_left = 8
-expand_margin_left = 16.0
-expand_margin_top = 16.0
-expand_margin_right = 16.0
-expand_margin_bottom = 16.0
+expand_margin_left = 32.0
+expand_margin_top = 32.0
+expand_margin_right = 32.0
+expand_margin_bottom = 32.0
 
 [node name="InventarioUi" type="CanvasLayer" unique_id=1738715262]
 layer = 10
 script = ExtResource("1_yrj8d")
 
-[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1357279790]
+[node name="TooltipBox" type="PanelContainer" parent="." unique_id=1357279790]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -42,7 +45,7 @@ grow_horizontal = 2
 theme = ExtResource("3_lf5rm")
 theme_override_styles/panel = SubResource("StyleBoxFlat_pog06")
 
-[node name="Tooltip" type="Label" parent="PanelContainer" unique_id=1794249670]
+[node name="Tooltip" type="Label" parent="TooltipBox" unique_id=1794249670]
 layout_mode = 2
 theme = ExtResource("3_lf5rm")
 
@@ -66,18 +69,31 @@ layout_mode = 2
 [node name="Contenuto" type="VBoxContainer" parent="Pannello/Margine" unique_id=1113591350]
 layout_mode = 2
 
-[node name="Titolo" type="Label" parent="Pannello/Margine/Contenuto" unique_id=2034598305]
+[node name="TitoloRiga" type="HBoxContainer" parent="Pannello/Margine/Contenuto" unique_id=24865402]
+layout_mode = 2
+
+[node name="IconaZaino" type="TextureRect" parent="Pannello/Margine/Contenuto/TitoloRiga" unique_id=63222793]
+texture_filter = 1
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+texture = ExtResource("3_qqmxb")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Titolo" type="Label" parent="Pannello/Margine/Contenuto/TitoloRiga" unique_id=2034598305]
 layout_mode = 2
 theme = ExtResource("2_pog06")
 text = "Zaino"
+vertical_alignment = 1
 
-[node name="Monete" type="Label" parent="Pannello/Margine/Contenuto" unique_id=159510864]
+[node name="Lista" type="ItemList" parent="Pannello/Margine/Contenuto" unique_id=953444448]
+texture_filter = 1
+custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 theme = ExtResource("3_lf5rm")
-
-[node name="Lista" type="VBoxContainer" parent="Pannello/Margine/Contenuto" unique_id=1160342458]
-layout_mode = 2
-theme = ExtResource("3_lf5rm")
+allow_search = false
+auto_height = true
+fixed_icon_size = Vector2i(48, 48)
 
 [node name="PromptMargin" type="MarginContainer" parent="." unique_id=338369531]
 anchors_preset = 15
@@ -86,7 +102,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-theme_override_constants/margin_bottom = 60
+theme_override_constants/margin_bottom = 160
 
 [node name="Prompt" type="Label" parent="PromptMargin" unique_id=657924963]
 layout_mode = 2
@@ -94,3 +110,63 @@ size_flags_horizontal = 4
 size_flags_vertical = 8
 theme = ExtResource("3_lf5rm")
 text = "Premi [F]  per interagire..."
+
+[node name="MoneteHUD" type="MarginContainer" parent="." unique_id=542559645]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 40.0
+grow_horizontal = 0
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="MoneteRiga" type="HBoxContainer" parent="MoneteHUD" unique_id=1745254176]
+layout_mode = 2
+
+[node name="IconaMonete" type="TextureRect" parent="MoneteHUD/MoneteRiga" unique_id=765357143]
+texture_filter = 1
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+texture = ExtResource("5_prmhq")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Monete" type="Label" parent="MoneteHUD/MoneteRiga" unique_id=159510864]
+layout_mode = 2
+theme = ExtResource("3_lf5rm")
+vertical_alignment = 1
+
+[node name="HotbarMargin" type="MarginContainer" parent="." unique_id=806547273]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -40.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_bottom = 24
+
+[node name="Hotbar" type="HBoxContainer" parent="HotbarMargin" unique_id=507913101]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Slot" parent="HotbarMargin/Hotbar" unique_id=966795201 instance=ExtResource("6_prmhq")]
+layout_mode = 2
+
+[node name="Slot2" parent="HotbarMargin/Hotbar" unique_id=1564679270 instance=ExtResource("6_prmhq")]
+layout_mode = 2
+
+[node name="Slot3" parent="HotbarMargin/Hotbar" unique_id=1265943213 instance=ExtResource("6_prmhq")]
+layout_mode = 2
+
+[node name="Slot4" parent="HotbarMargin/Hotbar" unique_id=318966869 instance=ExtResource("6_prmhq")]
+layout_mode = 2
+
+[node name="Slot5" parent="HotbarMargin/Hotbar" unique_id=1979122532 instance=ExtResource("6_prmhq")]
+layout_mode = 2

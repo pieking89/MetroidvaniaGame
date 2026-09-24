@@ -28,7 +28,7 @@ grow_vertical = 2
 mouse_filter = 2
 theme_override_constants/margin_left = 200
 theme_override_constants/margin_right = 200
-theme_override_constants/margin_bottom = 40
+theme_override_constants/margin_bottom = 160
 
 [node name="Panel" type="PanelContainer" parent="Margin" unique_id=169542244]
 layout_mode = 2
@@ -73,7 +73,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-theme_override_constants/margin_bottom = 60
+theme_override_constants/margin_bottom = 160
 
 [node name="Prompt" type="Label" parent="PromptMargin" unique_id=1408255522]
 layout_mode = 2
