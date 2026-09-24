@@ -1,0 +1,88 @@
+[gd_scene format=3 uid="uid://cx6lgj6hlq8al"]
+
+[ext_resource type="Script" uid="uid://c5p2ho6r3iuxc" path="res://scenes/components/cassa.gd" id="1_3k0he"]
+[ext_resource type="Texture2D" uid="uid://bilajocgjlueb" path="res://assets/sprites/vfx/Land-Jump.png" id="2_8ndln"]
+[ext_resource type="Texture2D" uid="uid://xd4tbfclox5j" path="res://assets/sprites/props/ChestPiccola.png" id="2_65rju"]
+[ext_resource type="Texture2D" uid="uid://jjoucc1240my" path="res://assets/sprites/props/ChestPiccolaHighlight.png" id="3_nqs0l"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ygxxk"]
+atlas = ExtResource("2_65rju")
+region = Rect2(14, 0, 14, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ipau4"]
+atlas = ExtResource("2_65rju")
+region = Rect2(0, 0, 14, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8qtp8"]
+atlas = ExtResource("3_nqs0l")
+region = Rect2(0, 0, 14, 14)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_oou1v"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ygxxk")
+}],
+"loop": 1,
+"name": &"aperta",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ipau4")
+}],
+"loop": 1,
+"name": &"chiusa",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8qtp8")
+}],
+"loop": 1,
+"name": &"chiusa_evidenziata",
+"speed": 5.0
+}]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_8ndln"]
+particles_animation = true
+particles_anim_h_frames = 2
+particles_anim_v_frames = 2
+particles_anim_loop = false
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_8ndln"]
+particle_flag_disable_z = true
+direction = Vector3(0, -1, 0)
+spread = 60.0
+initial_velocity_min = 20.0
+initial_velocity_max = 40.0
+gravity = Vector3(0, 60, 0)
+anim_offset_max = 1.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8ndln"]
+size = Vector2(34, 24)
+
+[node name="Cassa" type="Node2D" unique_id=1502708314]
+script = ExtResource("1_3k0he")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=829642724]
+sprite_frames = SubResource("SpriteFrames_oou1v")
+animation = &"aperta"
+
+[node name="Polvere" type="GPUParticles2D" parent="." unique_id=967458589]
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_8ndln")
+emitting = false
+amount = 12
+texture = ExtResource("2_8ndln")
+lifetime = 0.5
+one_shot = true
+explosiveness = 0.9
+process_material = SubResource("ParticleProcessMaterial_8ndln")
+
+[node name="ZonaInterazione" type="Area2D" parent="." unique_id=750411302]
+collision_layer = 64
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ZonaInterazione" unique_id=1551667480]
+shape = SubResource("RectangleShape2D_8ndln")

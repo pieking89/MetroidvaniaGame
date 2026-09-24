@@ -26,6 +26,8 @@ SceneTransition="*uid://bfkyopw1i0bbq"
 AudioManager="*uid://biytqwst1wymh"
 DialogBox="*uid://bb4n40doby2p2"
 GameState="*uid://c6kl0v2ao7phe"
+Inventario="*uid://blxq2rah4rjro"
+InventarioUI="*uid://dlvprtcondff7"
 
 [display]
 

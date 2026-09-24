@@ -1,0 +1,96 @@
+[gd_scene format=3 uid="uid://dlvprtcondff7"]
+
+[ext_resource type="Script" uid="uid://dwunnuarwhruk" path="res://scenes/ui/inventario_ui.gd" id="1_yrj8d"]
+[ext_resource type="Theme" uid="uid://bus4e4bqdo077" path="res://resources/themes/ui.tres" id="2_pog06"]
+[ext_resource type="Theme" uid="uid://f31lg6jflw7v" path="res://resources/themes/ui_small.tres" id="3_lf5rm"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pog06"]
+bg_color = Color(0, 0, 0, 0.5882353)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+expand_margin_left = 16.0
+expand_margin_top = 16.0
+expand_margin_right = 16.0
+expand_margin_bottom = 16.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pcn53"]
+bg_color = Color(0, 0, 0, 0.5882353)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+expand_margin_left = 16.0
+expand_margin_top = 16.0
+expand_margin_right = 16.0
+expand_margin_bottom = 16.0
+
+[node name="InventarioUi" type="CanvasLayer" unique_id=1738715262]
+layer = 10
+script = ExtResource("1_yrj8d")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1357279790]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_top = 48.0
+offset_right = 20.0
+offset_bottom = 89.0
+grow_horizontal = 2
+theme = ExtResource("3_lf5rm")
+theme_override_styles/panel = SubResource("StyleBoxFlat_pog06")
+
+[node name="Tooltip" type="Label" parent="PanelContainer" unique_id=1794249670]
+layout_mode = 2
+theme = ExtResource("3_lf5rm")
+
+[node name="Pannello" type="PanelContainer" parent="." unique_id=889209938]
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -262.0
+offset_top = -62.5
+offset_right = -64.0
+offset_bottom = 62.5
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_pcn53")
+
+[node name="Margine" type="MarginContainer" parent="Pannello" unique_id=1872696778]
+layout_mode = 2
+
+[node name="Contenuto" type="VBoxContainer" parent="Pannello/Margine" unique_id=1113591350]
+layout_mode = 2
+
+[node name="Titolo" type="Label" parent="Pannello/Margine/Contenuto" unique_id=2034598305]
+layout_mode = 2
+theme = ExtResource("2_pog06")
+text = "Zaino"
+
+[node name="Monete" type="Label" parent="Pannello/Margine/Contenuto" unique_id=159510864]
+layout_mode = 2
+theme = ExtResource("3_lf5rm")
+
+[node name="Lista" type="VBoxContainer" parent="Pannello/Margine/Contenuto" unique_id=1160342458]
+layout_mode = 2
+theme = ExtResource("3_lf5rm")
+
+[node name="PromptMargin" type="MarginContainer" parent="." unique_id=338369531]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_bottom = 60
+
+[node name="Prompt" type="Label" parent="PromptMargin" unique_id=657924963]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme = ExtResource("3_lf5rm")
+text = "Premi [F]  per interagire..."
