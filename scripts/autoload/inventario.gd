@@ -38,9 +38,39 @@ func assegna_hotbar(indice: int, item: ItemData) -> void:
 	hotbar[indice] = item
 	cambiato.emit()
 
-func usa_slot(indice: int) -> void:
-	var item := hotbar[indice]
-	if item == null:
+func usa_oggetto(item: ItemData) -> void:
+	if item == null or not oggetti.has(item):
 		return
 	oggetto_usato.emit(item)
 	rimuovi_oggetto(item)
+
+func usa_slot(indice: int) -> void:
+	usa_oggetto(hotbar[indice])
+
+func to_dict() -> Dictionary:
+	var ogg := {}
+	for item: ItemData in oggetti:
+		ogg[item.resource_path] = oggetti[item]
+	var hb := []
+	for item in hotbar:
+		hb.append(item.resource_path if item else "")
+	return { "monete": monete, "oggetti": ogg, "hotbar": hb }
+
+func from_dict(d: Dictionary) -> void:
+	monete = int(d.get("monete", 0))
+	oggetti.clear()
+	var ogg: Dictionary = d.get("oggetti", {})
+	for path in ogg:
+		var item := load(path) as ItemData
+		if item:
+			oggetti[item] = int(ogg[path])
+	hotbar.clear()
+	hotbar.resize(SLOT_HOTBAR)
+	var hb: Array = d.get("hotbar", [])
+	for i in mini(hb.size(), SLOT_HOTBAR):
+		if hb[i] != "":
+			hotbar[i] = load(hb[i]) as ItemData
+	cambiato.emit()
+
+func reset() -> void:
+	from_dict({})

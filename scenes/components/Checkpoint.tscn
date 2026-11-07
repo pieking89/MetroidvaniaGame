@@ -1,0 +1,164 @@
+[gd_scene format=3 uid="uid://dylskvygqka0q"]
+
+[ext_resource type="Script" uid="uid://pwhle72cawj3" path="res://scenes/components/checkpoint.gd" id="1_o3kf7"]
+[ext_resource type="Texture2D" uid="uid://cvfeqlmrsj61a" path="res://assets/sprites/props/Checkpoint.png" id="1_s6c57"]
+[ext_resource type="Texture2D" uid="uid://bilajocgjlueb" path="res://assets/sprites/vfx/Land-Jump.png" id="2_0d0cm"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_qdy1t"]
+load_path = "res://.godot/imported/Checkpoint.png-d3240cbcca88750e239f08972a705a1a.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0d0cm"]
+atlas = SubResource("CompressedTexture2D_qdy1t")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o3kf7"]
+atlas = SubResource("CompressedTexture2D_qdy1t")
+region = Rect2(0, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fojjm"]
+atlas = SubResource("CompressedTexture2D_qdy1t")
+region = Rect2(0, 64, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xdfea"]
+atlas = SubResource("CompressedTexture2D_qdy1t")
+region = Rect2(0, 80, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s6c57"]
+atlas = ExtResource("1_s6c57")
+region = Rect2(0, 96, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iton1"]
+atlas = ExtResource("1_s6c57")
+region = Rect2(0, 112, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0mnsk"]
+atlas = ExtResource("1_s6c57")
+region = Rect2(0, 128, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rbrbu"]
+atlas = ExtResource("1_s6c57")
+region = Rect2(0, 144, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8r8j5"]
+atlas = ExtResource("1_s6c57")
+region = Rect2(0, 160, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p4pp4"]
+atlas = ExtResource("1_s6c57")
+region = Rect2(0, 176, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vxqm3"]
+atlas = SubResource("CompressedTexture2D_qdy1t")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w0vip"]
+atlas = SubResource("CompressedTexture2D_qdy1t")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qdy1t"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0d0cm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o3kf7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fojjm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xdfea")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s6c57")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iton1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0mnsk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rbrbu")
+}],
+"loop": 0,
+"name": &"accensione",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8r8j5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p4pp4")
+}],
+"loop": 1,
+"name": &"accesa",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vxqm3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w0vip")
+}],
+"loop": 1,
+"name": &"spenta",
+"speed": 2.0
+}]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_o3kf7"]
+particles_animation = true
+particles_anim_h_frames = 2
+particles_anim_v_frames = 2
+particles_anim_loop = false
+
+[sub_resource type="Gradient" id="Gradient_0d0cm"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_0d0cm"]
+gradient = SubResource("Gradient_0d0cm")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_fojjm"]
+particle_flag_disable_z = true
+direction = Vector3(0, -1, 0)
+spread = 60.0
+initial_velocity_min = 20.0
+initial_velocity_max = 40.0
+gravity = Vector3(0, 60, 0)
+color_ramp = SubResource("GradientTexture1D_0d0cm")
+anim_offset_max = 1.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0d0cm"]
+size = Vector2(12, 16)
+
+[node name="Checkpoint" type="Node2D" unique_id=2060948538]
+script = ExtResource("1_o3kf7")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=853131464]
+sprite_frames = SubResource("SpriteFrames_qdy1t")
+animation = &"accesa"
+frame_progress = 0.2796794
+
+[node name="Scintille" type="GPUParticles2D" parent="." unique_id=1212710282]
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_o3kf7")
+emitting = false
+amount = 16
+texture = ExtResource("2_0d0cm")
+lifetime = 0.5
+one_shot = true
+explosiveness = 0.9
+process_material = SubResource("ParticleProcessMaterial_fojjm")
+
+[node name="Spawn" type="Marker2D" parent="." unique_id=1343722981]
+position = Vector2(0, -6)
+
+[node name="Zona" type="Area2D" parent="." unique_id=1805694733]
+collision_layer = 64
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Zona" unique_id=1705781634]
+shape = SubResource("RectangleShape2D_0d0cm")

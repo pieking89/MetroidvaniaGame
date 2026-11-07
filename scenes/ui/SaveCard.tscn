@@ -1,0 +1,138 @@
+[gd_scene format=3 uid="uid://bimudl5ev787k"]
+
+[ext_resource type="Script" uid="uid://dxse78exfiytu" path="res://scripts/ui/save_card.gd" id="1_3u4d6"]
+[ext_resource type="Texture2D" uid="uid://dpr52n6ovjlkg" path="res://assets/sprites/examples/PlainsPortrait.png" id="2_dd1cu"]
+[ext_resource type="Texture2D" uid="uid://dupf1ufw4ok7m" path="res://assets/sprites/props/CoinSingola.png" id="3_ps1at"]
+[ext_resource type="Theme" uid="uid://bus4e4bqdo077" path="res://resources/themes/ui.tres" id="4_2i7qr"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c8hqv"]
+bg_color = Color(0, 0, 0, 0.5882353)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0oqdo"]
+bg_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2i7qr"]
+bg_color = Color(0, 0, 0, 0.5882353)
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+
+[node name="SaveCard" type="Control" unique_id=769261329]
+custom_minimum_size = Vector2(360, 520)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 360.0
+offset_bottom = 520.0
+script = ExtResource("1_3u4d6")
+
+[node name="Card" type="PanelContainer" parent="." unique_id=185068262]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_c8hqv")
+
+[node name="Vuota" type="Button" parent="Card" unique_id=964486275]
+layout_mode = 2
+text = "Nuovo Salvataggio
+ㅤㅤㅤㅤㅤ
+ㅤㅤㅤㅤㅤ
++"
+flat = true
+
+[node name="Piena" type="MarginContainer" parent="Card" unique_id=885897667]
+layout_mode = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="VBox" type="VBoxContainer" parent="Card/Piena" unique_id=2009042496]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Nome" type="Label" parent="Card/Piena/VBox" unique_id=763280202]
+layout_mode = 2
+
+[node name="CampoNome" type="LineEdit" parent="Card/Piena/VBox" unique_id=1249889758]
+layout_mode = 2
+
+[node name="ArtworkCornice" type="PanelContainer" parent="Card/Piena/VBox" unique_id=845519750]
+clip_children = 1
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_0oqdo")
+
+[node name="Artwork" type="TextureRect" parent="Card/Piena/VBox/ArtworkCornice" unique_id=75293924]
+custom_minimum_size = Vector2(0, 160)
+layout_mode = 2
+texture = ExtResource("2_dd1cu")
+
+[node name="Stats" type="HBoxContainer" parent="Card/Piena/VBox" unique_id=1054246090]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Card/Piena/VBox/Stats" unique_id=1821126687]
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture = ExtResource("3_ps1at")
+
+[node name="Monete" type="Label" parent="Card/Piena/VBox/Stats" unique_id=1599435083]
+layout_mode = 2
+
+[node name="Opzioni" type="VBoxContainer" parent="Card/Piena/VBox" unique_id=1841584799]
+layout_mode = 2
+
+[node name="Gioca" type="Button" parent="Card/Piena/VBox/Opzioni" unique_id=731294280]
+layout_mode = 2
+theme = ExtResource("4_2i7qr")
+theme_override_font_sizes/font_size = 20
+text = "Gioca"
+flat = true
+
+[node name="Rinomina" type="Button" parent="Card/Piena/VBox/Opzioni" unique_id=1254925774]
+layout_mode = 2
+theme = ExtResource("4_2i7qr")
+theme_override_font_sizes/font_size = 20
+text = "Rinomina"
+flat = true
+
+[node name="Elimina" type="Button" parent="Card/Piena/VBox/Opzioni" unique_id=1178278010]
+layout_mode = 2
+theme = ExtResource("4_2i7qr")
+theme_override_font_sizes/font_size = 20
+text = "Elimina"
+flat = true
+
+[node name="Label" type="Label" parent="Card/Piena/VBox" unique_id=1547095899]
+layout_mode = 2
+text = "Clicca [Spazio] per piú info."
+horizontal_alignment = 1
+
+[node name="Info" type="PanelContainer" parent="." unique_id=825322552]
+layout_mode = 0
+offset_left = 360.0
+offset_top = 60.0
+offset_right = 600.0
+offset_bottom = 460.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_2i7qr")
+
+[node name="Margine" type="MarginContainer" parent="Info" unique_id=1789213405]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBox" type="VBoxContainer" parent="Info/Margine" unique_id=172057323]
+layout_mode = 2
+
+[node name="Tempo" type="Label" parent="Info/Margine/VBox" unique_id=472834277]
+layout_mode = 2

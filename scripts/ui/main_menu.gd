@@ -80,7 +80,7 @@ func close_options() -> void:
 
 
 func start_game() -> void:
-	SceneTransition.change_scene("res://scenes/levels/Overworld.tscn")
+		SceneTransition.change_scene("res://scenes/ui/SaveSelect.tscn")
 
 
 func quit_game() -> void:

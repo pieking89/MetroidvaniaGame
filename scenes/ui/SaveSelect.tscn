@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://dkldkb5blfpgs"]
+
+[ext_resource type="Texture2D" uid="uid://2okiouorqkt3" path="res://Screenshot 2026-09-21 115521.png" id="1_6o6ir"]
+[ext_resource type="Script" uid="uid://bwwrdenth00q5" path="res://scenes/ui/save_select.gd" id="1_s38o0"]
+[ext_resource type="PackedScene" uid="uid://bimudl5ev787k" path="res://scenes/ui/SaveCard.tscn" id="2_2se4w"]
+[ext_resource type="AudioStream" uid="uid://bv1dra14jma6g" path="res://assets/audio/sound effect/Click.mp3" id="4_c8hqv"]
+[ext_resource type="AudioStream" uid="uid://brqqhb7u7iffh" path="res://assets/audio/sound effect/Confirm.mp3" id="5_h50yo"]
+
+[node name="SaveSelect" type="Control" unique_id=335184113]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_s38o0")
+
+[node name="Sfondo" type="TextureRect" parent="." unique_id=2001583110]
+layout_mode = 0
+offset_right = 1920.5836
+offset_bottom = 1080.0
+texture = ExtResource("1_6o6ir")
+expand_mode = 1
+
+[node name="Overlay" type="ColorRect" parent="." unique_id=1383750809]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.5882353)
+
+[node name="Centro" type="CenterContainer" parent="." unique_id=1033364323]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Carte" type="HBoxContainer" parent="Centro" unique_id=1005010593]
+layout_mode = 2
+theme_override_constants/separation = 280
+
+[node name="SaveCard" parent="Centro/Carte" unique_id=769261329 instance=ExtResource("2_2se4w")]
+layout_mode = 2
+
+[node name="SaveCard2" parent="Centro/Carte" unique_id=575004879 instance=ExtResource("2_2se4w")]
+layout_mode = 2
+
+[node name="SaveCard3" parent="Centro/Carte" unique_id=210461436 instance=ExtResource("2_2se4w")]
+layout_mode = 2
+
+[node name="SfxMove" type="AudioStreamPlayer2D" parent="." unique_id=734198147]
+stream = ExtResource("4_c8hqv")
+bus = &"SFX"
+
+[node name="SfxSelect" type="AudioStreamPlayer2D" parent="." unique_id=308177883]
+stream = ExtResource("5_h50yo")
+bus = &"SFX"

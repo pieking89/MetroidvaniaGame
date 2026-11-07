@@ -138,4 +138,4 @@ func toggle_pause() -> void:
 
 func quit_game() -> void:
 	AudioManager.set_muffled(false)
-	SceneTransition.change_scene("res://scenes/ui/main_menu.tscn")
+	SaveManager.esci_al_menu("res://scenes/ui/main_menu.tscn")

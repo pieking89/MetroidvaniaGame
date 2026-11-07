@@ -72,7 +72,7 @@ func start_dash() -> void:
 
 
 func _physics_process(delta: float) -> void:
-	var bloccato := DialogBox.aperto
+	var bloccato := DialogBox.aperto or InventarioUI.zaino_aperto()
 	var direction := 0.0 if bloccato else Input.get_axis("move_left", "move_right")
 
 	is_crouching = Input.is_action_pressed("crouch") and not bloccato
@@ -166,7 +166,8 @@ func _physics_process(delta: float) -> void:
 			if velocity.y < 0.0:
 				velocity.y *= 0.4
 
-	var current_speed := CROUCH_SPEED if is_crouching else SPEED
+	var boost := Effetti.moltiplicatore(ItemData.Effetto.VELOCITA)
+	var current_speed := (CROUCH_SPEED if is_crouching else SPEED) * boost
 
 	# --- passi
 	if is_on_floor() and direction != 0.0:
@@ -190,7 +191,7 @@ func _physics_process(delta: float) -> void:
 		if same_way and above_speed:
 			velocity.x = move_toward(velocity.x, target, MOMENTUM_FRICTION * delta)
 		else:
-			velocity.x = move_toward(velocity.x, target, ACCELERATION * delta)
+			velocity.x = move_toward(velocity.x, target, ACCELERATION * boost * delta)
 	else:
 		velocity.x = move_toward(velocity.x, 0.0, FRICTION * delta)
 

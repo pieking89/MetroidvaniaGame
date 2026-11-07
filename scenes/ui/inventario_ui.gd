@@ -23,6 +23,7 @@ func _ready() -> void:
 		slots[i].imposta_numero(i + 1)
 	Inventario.cambiato.connect(_aggiorna)
 	Inventario.oggetto_usato.connect(_on_oggetto_usato)
+	lista.item_activated.connect(_on_lista_item_activated)
 	_aggiorna()
 
 func _process(_delta: float) -> void:
@@ -130,3 +131,12 @@ func nascondi_prompt() -> void:
 	_pt.tween_property(prompt, "modulate:a", 0.0, 0.12)
 	_pt.tween_property(prompt, "scale", Vector2(0.9, 0.9), 0.12)
 	_pt.chain().tween_callback(prompt.hide)
+
+func _on_lista_item_activated(indice: int) -> void:
+	var item: ItemData = lista.get_item_metadata(indice)
+	Inventario.usa_oggetto(item)
+	if lista.item_count > 0:
+		lista.select(min(indice, lista.item_count - 1))
+
+func zaino_aperto() -> bool:
+	return pannello.visible

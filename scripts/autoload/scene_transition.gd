@@ -63,7 +63,7 @@ func reveal() -> void:
 	_rect.mouse_filter = Control.MOUSE_FILTER_IGNORE
 
 
-func change_scene(path: String) -> void:
+func change_scene(path: String, prima_di_mostrare: Callable = Callable()) -> void:
 	if busy:
 		return
 	busy = true
@@ -72,5 +72,7 @@ func change_scene(path: String) -> void:
 	get_tree().change_scene_to_file(path)
 	await get_tree().process_frame
 	await get_tree().process_frame
+	if prima_di_mostrare.is_valid():
+		prima_di_mostrare.call()
 	await reveal()
 	busy = false

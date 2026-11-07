@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="ItemData" format=3 uid="uid://dh76kagxexjeo"]
+
+[ext_resource type="Texture2D" uid="uid://dfd7ftacbig27" path="res://assets/sprites/props/Pozione Di Velocitá.png" id="1_6cvia"]
+[ext_resource type="Script" uid="uid://cmh20cjfwsu5d" path="res://scripts/items/ItemData.gd" id="1_rko7i"]
+
+[resource]
+script = ExtResource("1_rko7i")
+nome = "Pozione di Velocitá"
+icona = ExtResource("1_6cvia")
+effetto = 1
+metadata/_custom_type_script = "uid://cmh20cjfwsu5d"
